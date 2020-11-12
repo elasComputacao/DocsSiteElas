@@ -1,0 +1,637 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Components · Site Elas@Computação Docs</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Visão Geral"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Components · Site Elas@Computação Docs"/><meta property="og:type" content="website"/><meta property="og:url" content="https://elascomputacao.github.io/DocsSiteElas/"/><meta property="og:description" content="## Visão Geral"/><meta property="og:image" content="https://elascomputacao.github.io/DocsSiteElas/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://elascomputacao.github.io/DocsSiteElas/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/DocsSiteElas/img/logo_png2.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://elascomputacao.github.io/DocsSiteElas/blog/atom.xml" title="Site Elas@Computação Docs Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://elascomputacao.github.io/DocsSiteElas/blog/feed.xml" title="Site Elas@Computação Docs Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/DocsSiteElas/js/scrollSpy.js"></script><link rel="stylesheet" href="/DocsSiteElas/css/main.css"/><script src="/DocsSiteElas/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/DocsSiteElas/"><img class="logo" src="/DocsSiteElas/img/elas_horizontal.png" alt="Site Elas@Computação Docs"/><h2 class="headerTitleWithLogo">Site Elas@Computação Docs</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/DocsSiteElas/docs/site" target="_self">Docs</a></li><li class=""><a href="/DocsSiteElas/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Site</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Projetos</h3><ul class=""><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site">Site</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Site</h3><ul class=""><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-get-started">Primeiros Passos</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-struct">Estrutura</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-enums">Enums</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-functions">Functions</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/DocsSiteElas/docs/site-components">Components</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-pages">Pages</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-translation">Como adicionar uma tradução?</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Components</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="visão-geral"></a><a href="#visão-geral" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Visão Geral</h2>
+<p>Esse diretório compreende todos os componentes desenvolvidos para o site.</p>
+<p>De modo geral, todos estão organizados em pastas que contém dois arquivos:</p>
+<ul>
+<li><p><strong>index.tsx</strong>: Código em TSX do componente.</p></li>
+<li><p><strong>styles.css</strong>: Estilo aplicado no componente.</p></li>
+</ul>
+<p>Os componentes existentes são:</p>
+<ul>
+<li><p><strong>ContactCard</strong>: Card para informações de contato</p></li>
+<li><p><strong>DropDown</strong>: Botão com efeito de expansão. Utilizado para os idiomas.</p></li>
+<li><p><strong>EventCard</strong>: Card para eventos.</p></li>
+<li><p><strong>IconStatus</strong>: Ícone com status. Utilizado para mostrar as causas apoiadas pelo Elas@Computação.</p></li>
+<li><p><strong>ItemContent</strong>: Item contido no DropDown.</p></li>
+<li><p><strong>LinkButton</strong>: Botão com link de redirecionamento.</p></li>
+<li><p><strong>PictureLink</strong>: Link com imagem. Utilizado para representar as membras no painel e também os parceiros.</p></li>
+<li><p><strong>ProjectCard</strong>: Card para projetos.</p></li>
+<li><p><strong>Section</strong>: Seções do site.</p></li>
+<li><p><strong>Tooltip</strong>: Componente com efeito de tooltip.</p></li>
+</ul>
+<p>Abaixo estão especificados detalhes de todos os componentes.</p>
+<h2><a class="anchor" aria-hidden="true" id="contactcard"></a><a href="#contactcard" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ContactCard</h2>
+<p>O componente ContactCard compreende a estutura utilizada para representar uma informação de contato ou localização. No site, pode ser encontrado no footer, mostrando o e-mail e o endereço da comunidade.</p>
+<p>Visão geral do código:</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> React, { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> {CopyToClipboard} <span class="hljs-keyword">from</span> <span class="hljs-string">'react-copy-to-clipboard'</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">'./styles.css'</span>
+
+interface Properties {
+    icon?: string;
+    content: string;
+    copy?: boolean;
+    href?:string;
+}
+<span class="hljs-keyword">const</span> ContactCard:React.FC&lt;Properties&gt; = <span class="hljs-function">(<span class="hljs-params">{content, copy, href, children}</span>) =&gt;</span> {
+
+  <span class="hljs-keyword">const</span> [status, setStatus] = useState(<span class="hljs-literal">false</span>)
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">showStatus</span>(<span class="hljs-params">val</span>) </span>{
+    <span class="hljs-keyword">const</span> element = <span class="hljs-built_in">window</span>.document.getElementById(<span class="hljs-string">"status"</span>);
+    <span class="hljs-keyword">if</span> (val &amp;&amp; copy) {
+      element.style.visibility = <span class="hljs-string">"visible"</span>;
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (copy){
+      element.style.visibility = <span class="hljs-string">"hidden"</span>;
+      setStatus(<span class="hljs-literal">false</span>);
+    }
+  }
+
+  <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">onMouseOver</span>=<span class="hljs-string">{()</span> =&gt;</span> showStatus(true)}
+      onMouseOut={() =&gt; showStatus(false)}&gt;
+        {
+          copy ? 
+          <span class="hljs-tag">&lt;<span class="hljs-name">CopyToClipboard</span> <span class="hljs-attr">text</span>=<span class="hljs-string">{content}</span> 
+            <span class="hljs-attr">onCopy</span>=<span class="hljs-string">{()</span> =&gt;</span> setStatus(true)}&gt;
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"contactcard-component"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"icon"</span>&gt;</span>
+                {children}
+              <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"text-content"</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"copy"</span>&gt;</span>
+                {content}
+              <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"status"</span>&gt;</span>
+                {status ? "Copiado!" : "Clique para copiar!"}
+              <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">CopyToClipboard</span>&gt;</span> :
+          <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">{href}</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"contactcard-component"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"icon"</span>&gt;</span>
+              {children}
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"text-content"</span>&gt;</span>
+              {content}
+            <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        }
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> ContactCard;
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="propriedades"></a><a href="#propriedades" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Propriedades</h3>
+<ul>
+<li><p><strong>content</strong>: Conteúdo em texto que deverá aparecer no componente. Ex: <a href="mailto:elas@computacao.ufcg.edu.br">elas@computacao.ufcg.edu.br</a></p></li>
+<li><p><strong>copy</strong>: Booleano que indica se o conteúdo pode ser copiado ao clicar</p></li>
+<li><p><strong>href</strong>: Endereço para redirecionar o usuário ao clicar no componente.</p></li>
+<li><p><strong>children</strong>: Por padrão, no children pode ser passado um ícone que será exibido juntamente da informação de contato/localização. Isso dá mais liberdade para que se possam passar também ícones de bibliotecas muito utilizadas em React, como a <a href="https://feathericons.com/">Feather Icons</a>.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="mais-informações"></a><a href="#mais-informações" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mais informações</h3>
+<p>Para o efeito de copiar ao clicar, utilizamos o módulo <a href="https://www.npmjs.com/package/react-copy-to-clipboard">CopyToClipboard</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="dropdown"></a><a href="#dropdown" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>DropDown</h2>
+<p>Esse componente é consiste em uma <a href="https://pt.wikipedia.org/wiki/Menu_drop-down">lista suspensa</a>. No site, ele é utilizado para optar pelos idiomas disponíveis.</p>
+<p>Visão geral do código:</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> React, { useEffect, useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> {css} <span class="hljs-keyword">from</span> <span class="hljs-string">'emotion'</span>;
+<span class="hljs-keyword">import</span> { useMenuState, Menu, MenuItem, MenuButton } <span class="hljs-keyword">from</span> <span class="hljs-string">"reakit/Menu"</span>;
+<span class="hljs-keyword">import</span> ItemContent <span class="hljs-keyword">from</span> <span class="hljs-string">'../ItemContent'</span>;
+<span class="hljs-keyword">import</span> { ChevronDown, ChevronUp } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-feather'</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">'./styles.css'</span>
+
+<span class="hljs-keyword">const</span> styles = css`<span class="css">
+  <span class="hljs-selector-tag">display</span>: <span class="hljs-selector-tag">flex</span>;
+  <span class="hljs-selector-tag">flex-direction</span>: <span class="hljs-selector-tag">column</span>;
+  <span class="hljs-selector-tag">background</span>: <span class="hljs-selector-tag">white</span>;
+  <span class="hljs-selector-tag">transition</span>: <span class="hljs-selector-tag">opacity</span> 250<span class="hljs-selector-tag">ms</span> <span class="hljs-selector-tag">ease-in-out</span>, <span class="hljs-selector-tag">transform</span> 250<span class="hljs-selector-tag">ms</span> <span class="hljs-selector-tag">ease-in-out</span>;
+  <span class="hljs-selector-tag">opacity</span>: 0;
+  <span class="hljs-selector-tag">transform-origin</span>: <span class="hljs-selector-tag">top</span> <span class="hljs-selector-tag">center</span>;
+  <span class="hljs-selector-tag">transform</span>: <span class="hljs-selector-tag">scaleY</span>(0);
+  <span class="hljs-selector-attr">[data-enter]</span> &amp; {
+    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scaleY</span>(<span class="hljs-number">1</span>);
+  }
+`</span>;
+
+interface Properties {
+  <span class="hljs-attr">title</span>: string;
+  defaultImg: string;
+  items: {
+    <span class="hljs-attr">src</span>: string;
+    subtitle: string;
+    ref: string;
+  }[];
+};
+
+<span class="hljs-keyword">const</span> DropDown:React.FC&lt;Properties&gt; = <span class="hljs-function">(<span class="hljs-params">{title, defaultImg, items}</span>) =&gt;</span> {
+  <span class="hljs-keyword">const</span> menu = useMenuState({ <span class="hljs-attr">animated</span>: <span class="hljs-number">250</span> });
+
+  <span class="hljs-keyword">const</span> [url, setURL] = useState(<span class="hljs-string">""</span>);
+
+  useEffect(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    setURL(<span class="hljs-built_in">window</span>.location.href)
+  }, []);
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">verifyLocation</span>(<span class="hljs-params">href</span>) </span>{
+    <span class="hljs-keyword">if</span> (!url.split(<span class="hljs-string">"/"</span>).includes(href)) {
+      <span class="hljs-keyword">return</span> href;
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">"#"</span>;
+    }
+  }
+
+  <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"dropdown-component"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">MenuButton</span> {<span class="hljs-attr">...menu</span>} <span class="hljs-attr">className</span>=<span class="hljs-string">"button"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>{title}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{defaultImg}</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Lang"</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"selected"</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ChevronDown</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"icon"</span>/&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">MenuButton</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">Menu</span>
+            {<span class="hljs-attr">...menu</span>}
+            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">{title}</span>
+            <span class="hljs-attr">style</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">border:</span> <span class="hljs-attr">0</span>, <span class="hljs-attr">background:</span> "<span class="hljs-attr">none</span>", <span class="hljs-attr">padding:</span> <span class="hljs-attr">0</span> }}
+          &gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{styles}</span>&gt;</span>
+              {items.map((item) =&gt; {
+                return(
+                <span class="hljs-tag">&lt;<span class="hljs-name">MenuItem</span> {<span class="hljs-attr">...menu</span>} <span class="hljs-attr">className</span>=<span class="hljs-string">"menu-item"</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">{verifyLocation(item.ref)}</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">ItemContent</span>
+                      <span class="hljs-attr">title</span>=<span class="hljs-string">{item.subtitle}</span>
+                      <span class="hljs-attr">src</span>=<span class="hljs-string">{item.src}</span>
+                    /&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">MenuItem</span>&gt;</span>);
+              })}
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">Menu</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> DropDown;
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="propriedades-1"></a><a href="#propriedades-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Propriedades</h3>
+<ul>
+<li><p><strong>title</strong>: Título a ser exibido no botão. Ex: Idioma</p></li>
+<li><p><strong>defaultImg</strong>: Imagem default a ser mostrada no botão junto do título. Ex: icons.brasilFlag</p></li>
+<li><p><strong>items</strong>: Array de objetos que representam um item a ser listado pela lista suspensa. No nosso caso, a lista passada é a contida no arquivo <a href="http://localhost:3000/docs/site-enums#langsts">langs.ts</a></p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="mais-informações-1"></a><a href="#mais-informações-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mais informações</h3>
+<p>Esse componente é escrito em cima do <a href="https://reakit.io/docs/menu/">Menu do Reakit</a>, adaptando apenas para o funcionamento dentro da finalidade que desejamos no site.</p>
+<p>Além disso, o componente <a href="#itemcontent">ItemContent</a> é utilizado em seu conteúdo para representar cada item da lista suspensa.</p>
+<h2><a class="anchor" aria-hidden="true" id="eventcard"></a><a href="#eventcard" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>EventCard</h2>
+<p>Aqui temos o componente utilizado para representar um evento no site. A estilização desse é feita baseada em uma nota adesiva e utilizamos na seção de Eventos.</p>
+<p>Visão geral do código:</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> React, { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">'./styles.css'</span>
+
+interface Properties {
+    title?: string;
+    day?: string;
+    month?: string;
+    year?: string;
+    description: string;
+    time?: string;
+    eventURL?: string;
+    href?: string;
+    local?: string;
+    note?: boolean;
+}
+<span class="hljs-keyword">const</span> EventCard:React.FC&lt;Properties&gt; = <span class="hljs-function">(<span class="hljs-params">{note, title, day, month, year, description, time, local, eventURL, href}</span>) =&gt;</span> {
+  <span class="hljs-keyword">const</span> [isOver, setIsOver] = useState(<span class="hljs-literal">false</span>);
+  <span class="hljs-keyword">const</span> dateTime = day != <span class="hljs-string">""</span> &amp;&amp; month != <span class="hljs-string">""</span> &amp;&amp; year != <span class="hljs-string">""</span> &amp;&amp; time != <span class="hljs-string">""</span> ? <span class="hljs-string">`<span class="hljs-subst">${day}</span>/<span class="hljs-subst">${month}</span>/<span class="hljs-subst">${year}</span> - <span class="hljs-subst">${time}</span>`</span> : <span class="hljs-string">""</span>
+
+  <span class="hljs-keyword">return</span> (
+    note ? 
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"eventcard-component"</span> <span class="hljs-attr">onMouseOver</span>=<span class="hljs-string">{()</span> =&gt;</span> setIsOver(true)} onMouseOut={() =&gt; setIsOver(false)}&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"header-note"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"pin"</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"pin-part"</span>&gt;</span>
+         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+       <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"note"</span>&gt;</span>
+        {description}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>:
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"eventcard-component"</span> <span class="hljs-attr">onMouseOver</span>=<span class="hljs-string">{()</span> =&gt;</span> setIsOver(true)} onMouseOut={() =&gt; setIsOver(false)}&gt;
+     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"header-note"</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"pin"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"pin-part"</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"title"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>{title}<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"infos"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>{dateTime}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>{local}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+       <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+         {description}
+       <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{isOver</span> ?  "<span class="hljs-attr">more</span>" <span class="hljs-attr">:</span> "<span class="hljs-attr">more-hidden</span>"}&gt;</span>
+        {eventURL.trim() == "" ?
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"block"</span>&gt;</span>Adicionar à agenda<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        :
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">{eventURL}</span>&gt;</span>Adicionar à agenda<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        }
+
+        {href.trim() == "" ?
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"block"</span>&gt;</span>Saber mais<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        :
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">{href}</span>&gt;</span>Saber mais<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        }
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span> 
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="propriedades-2"></a><a href="#propriedades-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Propriedades</h3>
+<ul>
+<li><p><strong>title</strong>: Título da nota adesiva. Ex: Café com Elas</p></li>
+<li><p><strong>day</strong>: Dia do evento. Ex: 05</p></li>
+<li><p><strong>month</strong>: Mês do evento. Ex: 11</p></li>
+<li><p><strong>year</strong>: Ano do evento. Ex: 2020</p></li>
+<li><p><strong>description</strong>: Descrição breve sobre o evento. Ex: Café com elas na JACC</p></li>
+<li><p><strong>time</strong>: Horário que irá ocorrer o evento. Ex: 19h</p></li>
+<li><p><strong>eventURL</strong>: URL para adicionar o evento à agenda ou acessar uma plataforma que sediará o evento de forma remota</p></li>
+<li><p><strong>href</strong>: URL para site ou ambiente para mais informações sobre o evento</p></li>
+<li><p><strong>local</strong>: Onde o evento irá ocorrer. Ex: Google Meet</p></li>
+<li><p><strong>note</strong>: Booleano que representa opção para a nota apenas mostrar a descrição passada, em caso de não houver eventos a serem listados</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="mais-informações-2"></a><a href="#mais-informações-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mais informações</h3>
+<p>Esse componente foi todo feito à mão para ser adicionado à proposta do site.</p>
+<h2><a class="anchor" aria-hidden="true" id="iconstatus"></a><a href="#iconstatus" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>IconStatus</h2>
+<p>O IconStatus é um componente utilizado para mostrar uma imagem que contém um ícone de status abaixo. No site, ele é utilizado para mostrar as causas que o Elas@Computação apoia, deixando em evidência algum movimento em campanha no momento.</p>
+<p>Visão geral do código:</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+
+<span class="hljs-keyword">import</span> Tooltip <span class="hljs-keyword">from</span> <span class="hljs-string">'../Tooltip'</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">'./styles.css'</span>
+
+interface Properties {
+    <span class="hljs-attr">icon</span>: string;
+    status: string;
+    statusText: string;
+}
+
+<span class="hljs-keyword">const</span> IconStatus:React.FC&lt;Properties&gt; = <span class="hljs-function">(<span class="hljs-params">{icon, status, statusText}</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"iconstatus-component"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{icon}</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Icon"</span>/&gt;</span>     
+      <span class="hljs-tag">&lt;<span class="hljs-name">Tooltip</span> <span class="hljs-attr">position</span>=<span class="hljs-string">"bottom"</span> <span class="hljs-attr">slim</span>=<span class="hljs-string">{false}</span> <span class="hljs-attr">text</span>=<span class="hljs-string">{statusText}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{status}</span>  <span class="hljs-attr">alt</span>=<span class="hljs-string">"Status"</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"status"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">Tooltip</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> IconStatus;
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="propriedades-3"></a><a href="#propriedades-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Propriedades</h3>
+<ul>
+<li><p><strong>icon</strong>: Imagem principal do componente, que ficará em evidência. Ex: elas_vertical</p></li>
+<li><p><strong>status</strong>: Imagem que aparecerá como status atual da imagem, ficará no canto inferior direito da imagem original. Ex: icons.lgbtFlag</p></li>
+<li><p><strong>statusText</strong>: Texto que será exibido ao passar o mouse por cima do status em um Tooltip. Ex: O Elas@Computação é favorável a todo tipo de amor.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="mais-informações-3"></a><a href="#mais-informações-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mais informações</h3>
+<p>O componente <a href="#tooltip">Tooltip</a> é utilizado dentro desse para o efeito de mostrar o texto de apoio à causa ao passar o mouse por cima do ícone de status.</p>
+<h2><a class="anchor" aria-hidden="true" id="itemcontent"></a><a href="#itemcontent" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ItemContent</h2>
+<p>Esse componente representa um item de um <a href="#dropdown">DropDown</a>.</p>
+<p>Visão geral do código:</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">'./styles.css'</span>
+
+interface Properties {
+    <span class="hljs-attr">src</span>: string;
+    title: string;
+}
+
+<span class="hljs-keyword">const</span> ItemContent:React.FC&lt;Properties&gt; = <span class="hljs-function">(<span class="hljs-params">{src, title}</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"itemcontent-component"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{src}</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">{title}/</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>{title}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> ItemContent;
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="propriedades-4"></a><a href="#propriedades-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Propriedades</h3>
+<ul>
+<li><p><strong>src</strong>: Caminho/endereço para uma imagem que representa o item. Ex: icons.brasilFlag</p></li>
+<li><p><strong>title</strong>: Título do item. Ex: Português</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="mais-informações-4"></a><a href="#mais-informações-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mais informações</h3>
+<p>Esse componente foi feito apenas para representar de maneira mais adequada um item em uma lista suspensa no formato que se desejava no site.</p>
+<h2><a class="anchor" aria-hidden="true" id="linkbutton"></a><a href="#linkbutton" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>LinkButton</h2>
+<p>Componente de botão com redirecionamento para uma URL. Utilizado nas seções e nos cards de projeto.</p>
+<p>Visão geral do código:</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">'./styles.css'</span>
+
+interface Properties {
+    <span class="hljs-attr">href</span>: string;
+    title: string;
+}
+
+<span class="hljs-keyword">const</span> LinkButton:React.FC&lt;Properties&gt; = <span class="hljs-function">(<span class="hljs-params">{href, title}</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"linkbutton-component"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">{href}</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>{title}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> LinkButton;
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="propriedades-5"></a><a href="#propriedades-5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Propriedades</h3>
+<ul>
+<li><p><strong>href</strong>: URL que o botão irá redirecionar. Ex: /schedule</p></li>
+<li><p><strong>title</strong>: Título do botão. Ex: Conferir</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="mais-informações-5"></a><a href="#mais-informações-5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mais informações</h3>
+<p>Esse componente foi feito com a finalidade de reaproveitamento do código e do estilo de botão.</p>
+<h2><a class="anchor" aria-hidden="true" id="picturelink"></a><a href="#picturelink" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PictureLink</h2>
+<p>Componente de link com imagem. Utilizamos em duas seções do site: no Painel, para representar as membras e redirecionar para seus respectivos GitHubs e nas Parcerias, para representar nossos parceiros e redirecionar para seus sites/GitHubs.</p>
+<p>Visão geral do código:</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> Tooltip <span class="hljs-keyword">from</span> <span class="hljs-string">'../Tooltip'</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">'./styles.css'</span>
+
+interface Properties {
+    <span class="hljs-attr">pic</span>: string;
+    href: string;
+    text: string;
+};
+
+<span class="hljs-keyword">const</span> PictureLink:React.FC&lt;Properties&gt; = <span class="hljs-function">(<span class="hljs-params">{pic, href, text}</span>) =&gt;</span>  {
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"picturelink-component"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Tooltip</span> <span class="hljs-attr">position</span>=<span class="hljs-string">"bottom"</span> <span class="hljs-attr">slim</span>=<span class="hljs-string">{true}</span> <span class="hljs-attr">text</span>=<span class="hljs-string">{</span>`${<span class="hljs-attr">text</span>}`}&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">{href}</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{pic}</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">{text}/</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Tooltip</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> PictureLink;
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="propriedades-6"></a><a href="#propriedades-6" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Propriedades</h3>
+<ul>
+<li><p><strong>pic</strong>: URL ou caminho para imagem que aparecerá no componente. Ex: icons.brasilFlag</p></li>
+<li><p><strong>href</strong>: URL que irá redirecionar o usuário. Ex: <a href="https://www.github.com/elasComputacao">https://www.github.com/elasComputacao</a></p></li>
+<li><p><strong>text</strong>: Texto que aparecerá no tooltip com informações acerca do que se trata o link. Ex: OpenDev UFCG</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="mais-informações-6"></a><a href="#mais-informações-6" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mais informações</h3>
+<p>O componente <a href="#tooltip">Tooltip</a> também é utilizado na implementação desse componente.</p>
+<h2><a class="anchor" aria-hidden="true" id="projectcard"></a><a href="#projectcard" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ProjectCard</h2>
+<p>ProjectCard é o componente que representa um card de projeto. No site, podemos vê-los no carrossel de projetos na seção Projetos.</p>
+<p>Visão geral do código:</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> LinkButton <span class="hljs-keyword">from</span> <span class="hljs-string">'../LinkButton'</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">'./styles.css'</span>
+
+interface Properties {
+    <span class="hljs-attr">title</span>: string;
+    description: string;
+    imageURL: string;
+    href: string;
+    type: string;
+    color?: string;
+    buttonText: string;
+}
+<span class="hljs-keyword">const</span> ProjectCard:React.FC&lt;Properties&gt; = <span class="hljs-function">(<span class="hljs-params">{title, description, imageURL, href, type, color, buttonText}</span>) =&gt;</span> {
+  
+  <span class="hljs-keyword">const</span> DEFAULT_COLOR = <span class="hljs-string">"#fff6f3"</span>;
+
+  <span class="hljs-keyword">const</span> backgroundStyle = {
+    <span class="hljs-attr">backgroundColor</span>: color &amp;&amp; color == <span class="hljs-string">""</span> ? DEFAULT_COLOR : color
+  }
+
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"projectcard-component"</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{type}</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"img-content"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{backgroundStyle}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{imageURL}/</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"content"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>{title}<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+          {description}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">LinkButton</span>
+        <span class="hljs-attr">href</span>=<span class="hljs-string">{href}</span>
+        <span class="hljs-attr">title</span>=<span class="hljs-string">{buttonText}</span>
+        /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> ProjectCard;
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="propriedades-7"></a><a href="#propriedades-7" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Propriedades</h3>
+<ul>
+<li><p><strong>title</strong>: Título/nome do card. Ex: Café com Elas</p></li>
+<li><p><strong>description</strong>: Descrição breve sobre o conteúdo. Ex: O Café com Elas promove conversas e palestras de mulheres da TI, para estimular discussões voltadas para a área, nosso lugar, espaço e papel, buscando criar um ambiente acolhedor para a participação das meninas na comunidade.</p></li>
+<li><p><strong>imageURL</strong>: URL ou caminho para imagem que ilustra o card.</p></li>
+<li><p><strong>href</strong>: URL para site ou outra plataforma com mais informações. Ex: <a href="https://github.com/elasComputacao">https://github.com/elasComputacao</a></p></li>
+<li><p><strong>type</strong>: Sinalização para se o card deve ficar em destaque ou não. Pode assumir os valores &quot;normal&quot; para demonstração comum e &quot;spotlight&quot; para evidenciar.</p></li>
+<li><p><strong>color</strong>: Cor de fundo para a imagem. Caso não seja recebida uma cor, por default é setada a cor &quot;#fff6f3&quot;. O padrão utilizado é o hexadecimal. Ex: #ffffff</p></li>
+<li><p><strong>buttonText</strong>: Texto a ser apresentado no LinkButton. Ex: Conferir</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="mais-informações-7"></a><a href="#mais-informações-7" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mais informações</h3>
+<p>O componente <a href="#linkbutton">LinkButton</a> é utilizado na implementação desse componente.</p>
+<h2><a class="anchor" aria-hidden="true" id="section"></a><a href="#section" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Section</h2>
+<p>Componente utilizado para representar as seções do site.</p>
+<p>Visão geral do código:</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> React, { useEffect, useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { ChevronsDown, ChevronsUp } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-feather'</span>;
+<span class="hljs-keyword">import</span> LinkButton <span class="hljs-keyword">from</span> <span class="hljs-string">'../LinkButton'</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">'./styles.css'</span>
+
+interface Properties {
+    title: string;
+    className?: string;
+    toggle?: boolean;
+    subtitle?: string;
+    link?:string;
+    color?:string;
+}
+<span class="hljs-keyword">const</span> Section:React.FC&lt;Properties&gt; = ({title, children, className, toggle, subtitle, link, color}) =&gt; {
+  
+  <span class="hljs-keyword">const</span> [hidden, setHidden] = useState(<span class="hljs-literal">true</span>);
+  <span class="hljs-keyword">const</span> [text, setText] = useState(<span class="hljs-string">""</span>);
+
+  useEffect(() =&gt; {
+    <span class="hljs-keyword">if</span> (toggle) {
+      handleToggle();
+    }
+  }, [])
+
+  <span class="hljs-keyword">function</span> handleToggle() {
+    <span class="hljs-keyword">const</span> section = <span class="hljs-built_in">window</span>.<span class="hljs-built_in">document</span>.getElementById(className);
+    <span class="hljs-keyword">if</span> (hidden) {
+      <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.innerWidth &gt; <span class="hljs-number">1080</span>) {
+        section.style.maxHeight = <span class="hljs-string">"416px"</span>;
+      } <span class="hljs-keyword">else</span> {
+        section.style.maxHeight = <span class="hljs-string">"246px"</span>;
+      }
+    } <span class="hljs-keyword">else</span> {
+      section.style.maxHeight = <span class="hljs-string">"600vh"</span>;
+    }
+    setHidden(!hidden);
+  }
+
+  <span class="hljs-keyword">return</span> (
+    &lt;div id=<span class="hljs-string">"section-component"</span> className={className} style={{backgroundColor: color}}&gt;
+        &lt;div id={title}&gt;&lt;/div&gt;
+          &lt;h1&gt;{title}&lt;/h1&gt;
+          &lt;div className=<span class="hljs-string">"children"</span> id={className}&gt;
+              {children}
+          &lt;/div&gt;
+          {toggle ? 
+            &lt;button className=<span class="hljs-string">"toggle"</span> 
+            onClick={handleToggle}
+            onMouseOver={() =&gt; {hidden ? setText(<span class="hljs-string">"Mostrar menos"</span>) : setText(<span class="hljs-string">"Mostrar mais"</span>)}}
+            onMouseOut={() =&gt; setText(<span class="hljs-string">""</span>)}
+            &gt;
+              {hidden ? &lt;ChevronsUp className=<span class="hljs-string">"icon"</span><span class="hljs-regexp">/&gt; : &lt;ChevronsDown className="icon"/</span>&gt;}
+            &lt;<span class="hljs-regexp">/button&gt; : &lt;&gt;&lt;/</span>&gt;
+          }
+          {toggle ? 
+            &lt;span className=<span class="hljs-string">"status"</span>&gt;{text}&lt;<span class="hljs-regexp">/span&gt; : &lt;&gt;&lt;/</span>&gt;
+          }
+          {link ? &lt;LinkButton title={subtitle} href={link}<span class="hljs-regexp">/&gt; : &lt;&gt;&lt;/</span>&gt;}
+    &lt;/div&gt;
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Section;
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="propriedades-8"></a><a href="#propriedades-8" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Propriedades</h3>
+<ul>
+<li><p><strong>title</strong>: Título da seção. Ex: Sobre</p></li>
+<li><p><strong>className</strong>: Nome da classe CSS para estilização exclusiva. Ex: section-about</p></li>
+<li><p><strong>toggle</strong>: Booleano que, se passado (true), adiciona uma opção de esconder ou expandir parte do conteúdo da seção.</p></li>
+<li><p><strong>subtitle</strong>: Texto utilizado no LinkButton para redirecionamento, caso passado. Ex: Confira a agenda</p></li>
+<li><p><strong>link</strong>: Booleano que indica se a seção tem um link de redirecionamento que completa seu conteúdo. Um exemplo para tal pode ser visto na seção <a href="https://elascomputacao.github.io#Eventos">Eventos</a> do site, que redireciona para a agenda.</p></li>
+<li><p><strong>color</strong>: Cor de fundo da section, padrão em hexadecimal.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="mais-informações-8"></a><a href="#mais-informações-8" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mais informações</h3>
+<p><a href="#linkbutton">LinkButton</a> também é utilizado na implementação desse componente.</p>
+<h2><a class="anchor" aria-hidden="true" id="tooltip"></a><a href="#tooltip" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tooltip</h2>
+<p>Componente de efeito de tooltip.</p>
+<p>Visão geral do código:</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;
+
+<span class="hljs-keyword">import</span> {
+  useTooltipState,
+  Tooltip <span class="hljs-keyword">as</span> ReakitTooltip,
+  TooltipReference,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">"reakit/Tooltip"</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">'./styles.css'</span>
+
+<span class="hljs-keyword">const</span> Tooltip = <span class="hljs-function">(<span class="hljs-params">{ children, text, slim, position, ...props }</span>) =&gt;</span> {
+  <span class="hljs-keyword">const</span> tooltip = useTooltipState({<span class="hljs-attr">placement</span>: position});
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">TooltipReference</span> {<span class="hljs-attr">...tooltip</span>} <span class="hljs-attr">ref</span>=<span class="hljs-string">{children.ref}</span> {<span class="hljs-attr">...children.props</span>}&gt;</span>
+        {(referenceProps) =&gt; React.cloneElement(children, referenceProps)}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">TooltipReference</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ReakitTooltip</span> {<span class="hljs-attr">...tooltip</span>} {<span class="hljs-attr">...props</span>} <span class="hljs-attr">id</span>=<span class="hljs-string">{slim</span> ? "<span class="hljs-attr">text-slim</span>" <span class="hljs-attr">:</span> "<span class="hljs-attr">text</span>"}&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+            {text}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ReakitTooltip</span>&gt;</span>
+    <span class="hljs-tag">&lt;/&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Tooltip;
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="propriedades-9"></a><a href="#propriedades-9" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Propriedades</h3>
+<ul>
+<li><p><strong>children</strong>: Componente que ativará o tooltip ao passar com mouse por cima. A tag deverá envolver esse componente.</p></li>
+<li><p><strong>text</strong>: Texto que aparecerá no conteúdo do tooltip. Ex: CAESI</p></li>
+<li><p><strong>slim</strong>: Booleano que indica se o tooltip deve ter uma área menor, para receber apenas uma frase pequena ou palavra, como nos ícones do <a href="https://elascomputacao.github.io#Painel">Painel</a>.</p></li>
+<li><p><strong>position</strong>: Indica a posição que ele deve aparecer em relação ao componente que o ativa. Os padrões são seguidos de acordo com o <a href="https://reakit.io/docs/tooltip/">Reakit</a>.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="mais-informações-9"></a><a href="#mais-informações-9" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mais informações</h3>
+<p>Esse componente é escrito em cima do Tooltip do <a href="https://reakit.io/docs/tooltip/">Reakit</a>, adaptando-o apenas para facilitar nosso uso no contexto do site.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/DocsSiteElas/docs/site-functions"><span class="arrow-prev">← </span><span>Functions</span></a><a class="docs-next button" href="/DocsSiteElas/docs/site-pages"><span>Pages</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#visão-geral">Visão Geral</a></li><li><a href="#contactcard">ContactCard</a><ul class="toc-headings"><li><a href="#propriedades">Propriedades</a></li><li><a href="#mais-informações">Mais informações</a></li></ul></li><li><a href="#dropdown">DropDown</a><ul class="toc-headings"><li><a href="#propriedades-1">Propriedades</a></li><li><a href="#mais-informações-1">Mais informações</a></li></ul></li><li><a href="#eventcard">EventCard</a><ul class="toc-headings"><li><a href="#propriedades-2">Propriedades</a></li><li><a href="#mais-informações-2">Mais informações</a></li></ul></li><li><a href="#iconstatus">IconStatus</a><ul class="toc-headings"><li><a href="#propriedades-3">Propriedades</a></li><li><a href="#mais-informações-3">Mais informações</a></li></ul></li><li><a href="#itemcontent">ItemContent</a><ul class="toc-headings"><li><a href="#propriedades-4">Propriedades</a></li><li><a href="#mais-informações-4">Mais informações</a></li></ul></li><li><a href="#linkbutton">LinkButton</a><ul class="toc-headings"><li><a href="#propriedades-5">Propriedades</a></li><li><a href="#mais-informações-5">Mais informações</a></li></ul></li><li><a href="#picturelink">PictureLink</a><ul class="toc-headings"><li><a href="#propriedades-6">Propriedades</a></li><li><a href="#mais-informações-6">Mais informações</a></li></ul></li><li><a href="#projectcard">ProjectCard</a><ul class="toc-headings"><li><a href="#propriedades-7">Propriedades</a></li><li><a href="#mais-informações-7">Mais informações</a></li></ul></li><li><a href="#section">Section</a><ul class="toc-headings"><li><a href="#propriedades-8">Propriedades</a></li><li><a href="#mais-informações-8">Mais informações</a></li></ul></li><li><a href="#tooltip">Tooltip</a><ul class="toc-headings"><li><a href="#propriedades-9">Propriedades</a></li><li><a href="#mais-informações-9">Mais informações</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/DocsSiteElas/" class="nav-home"><img src="/DocsSiteElas/img/elas_horizontal.png" alt="Site Elas@Computação Docs"/></a><div><h5>Docs</h5><a href="/DocsSiteElas/docs/site">Projetos</a></div><div><h5>Community</h5><a href="https://www.instagram.com/elascomputacao/" target="_blank" rel="noreferrer noopener">Instagram</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/DocsSiteElas/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/DocsSiteElas/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Elas@Computação</section></footer></div></body></html>

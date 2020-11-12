@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://elascomputacao.github.io/DocsSiteElas/blog</id>
+    <title>Site Elas@Computação Docs Blog</title>
+    <updated>2020-10-30T06:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://elascomputacao.github.io/DocsSiteElas/blog"/>
+    <subtitle>The best place to stay up-to-date with the latest Site Elas@Computação Docs news and events.</subtitle>
+    <logo>https://elascomputacao.github.io/DocsSiteElas/img/elas_horizontal.png</logo>
+    <rights>Copyright © 2020 Elas@Computação</rights>
+    <entry>
+        <title type="html"><![CDATA[Site v1.0]]></title>
+        <id>https://elascomputacao.github.io/DocsSiteElas/blog/2020/10/30/site-v1.0.html</id>
+        <link href="https://elascomputacao.github.io/DocsSiteElas/blog/2020/10/30/site-v1.0.html"/>
+        <updated>2020-10-30T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>A primeira versão do Site do Elas@Computação está no ar!</p> <p>Acesse a documentação em clicando <a href="/docs/site">aqui</a>.</p> <p>Acesso o site clicando <a href="https://elascomputacao.github.io">aqui</a>.</p> ]]></summary>
+        <author>
+            <name>Maria Eduarda de Azevedo Silva</name>
+            <uri>http://twitter.com/ddt_azevedo</uri>
+        </author>
+    </entry>
+</feed>

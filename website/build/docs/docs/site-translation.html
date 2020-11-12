@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Como adicionar uma tradução? · Site Elas@Computação Docs</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Uma das formas de contribuir com o nosso site é traduzindo-o para novos idiomas! "/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Como adicionar uma tradução? · Site Elas@Computação Docs"/><meta property="og:type" content="website"/><meta property="og:url" content="https://elascomputacao.github.io/DocsSiteElas/"/><meta property="og:description" content="Uma das formas de contribuir com o nosso site é traduzindo-o para novos idiomas! "/><meta property="og:image" content="https://elascomputacao.github.io/DocsSiteElas/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://elascomputacao.github.io/DocsSiteElas/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/DocsSiteElas/img/logo_png2.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://elascomputacao.github.io/DocsSiteElas/blog/atom.xml" title="Site Elas@Computação Docs Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://elascomputacao.github.io/DocsSiteElas/blog/feed.xml" title="Site Elas@Computação Docs Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/DocsSiteElas/js/scrollSpy.js"></script><link rel="stylesheet" href="/DocsSiteElas/css/main.css"/><script src="/DocsSiteElas/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/DocsSiteElas/"><img class="logo" src="/DocsSiteElas/img/elas_horizontal.png" alt="Site Elas@Computação Docs"/><h2 class="headerTitleWithLogo">Site Elas@Computação Docs</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/DocsSiteElas/docs/site" target="_self">Docs</a></li><li class=""><a href="/DocsSiteElas/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Site</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Projetos</h3><ul class=""><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site">Site</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Site</h3><ul class=""><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-get-started">Primeiros Passos</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-struct">Estrutura</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-enums">Enums</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-functions">Functions</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-components">Components</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-pages">Pages</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/DocsSiteElas/docs/site-translation">Como adicionar uma tradução?</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Como adicionar uma tradução?</h1></header><article><div><span><p>Uma das formas de contribuir com o nosso site é traduzindo-o para novos idiomas!</p>
+<p>Abaixo temos um tutorial de como adicionar um novo idioma.</p>
+<h2><a class="anchor" aria-hidden="true" id="1-adicione-um-ícone"></a><a href="#1-adicione-um-ícone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. Adicione um ícone</h2>
+<p>Em <a href="site-enums#iconsts">enums/icons.ts</a> temos todos os ícones utilizados no site, inclusive os que representam os idiomas.</p>
+<p>De modo geral, utilizamos um ícone de uma bandeira que representa um país que fala aquela língua. Até então retiramos esses ícones do site <a href="https://www.flaticon.com/">Flaticon</a>.</p>
+<p>Para adicionar o ícone, dentro da estrutura de icons.ts adicione o nome do ícone (de preferência, siga o padrão nomeDoPaisFlag) apontando para a URL ou endereço da imagem.</p>
+<p>Caso queira adicionar a imagem à estrutura do site ao invés de utilizar uma URL, isso poderá ser feito colocando a imagem na pasta assets/images e apontando o nome do ícone para o caminho até a mesma.</p>
+<p>Abaixo um exemplo da adição da bandeira da França:</p>
+<pre><code class="hljs">const icons = {
+    <span class="hljs-attribute">rainbowRibbon</span>: "https://www<span class="hljs-variable">.flaticon</span><span class="hljs-variable">.com</span>/svg/static/icons/svg/2292/2292506<span class="hljs-variable">.svg</span>",
+    yellowRibbon: "https://www<span class="hljs-variable">.flaticon</span><span class="hljs-variable">.com</span>/svg/static/icons/svg/240/240485<span class="hljs-variable">.svg</span>",
+    blueRibbon: "https://www<span class="hljs-variable">.flaticon</span><span class="hljs-variable">.com</span>/svg/static/icons/svg/240/240383<span class="hljs-variable">.svg</span>",
+    pinkRibbon: "https://www<span class="hljs-variable">.flaticon</span><span class="hljs-variable">.com</span>/svg/static/icons/svg/242/242132<span class="hljs-variable">.svg</span>",
+    greenRibbon: "https://www<span class="hljs-variable">.flaticon</span><span class="hljs-variable">.com</span>/svg/static/icons/svg/240/240434<span class="hljs-variable">.svg</span>",
+    brasilFlag: "https://www<span class="hljs-variable">.flaticon</span><span class="hljs-variable">.com</span>/svg/static/icons/svg/3022/3022546<span class="hljs-variable">.svg</span>",
+    usaFlag: "https://www<span class="hljs-variable">.flaticon</span><span class="hljs-variable">.com</span>/svg/static/icons/svg/3013/3013911<span class="hljs-variable">.svg</span>",
+    spainFlag: "https://www<span class="hljs-variable">.flaticon</span><span class="hljs-variable">.com</span>/svg/static/icons/svg/3013/3013899<span class="hljs-variable">.svg</span>",
+    lgbtFlag: "https://www<span class="hljs-variable">.flaticon</span><span class="hljs-variable">.com</span>/svg/static/icons/svg/2620/2620727<span class="hljs-variable">.svg</span>",
+    girlPower: "https://www<span class="hljs-variable">.flaticon</span><span class="hljs-variable">.com</span>/svg/static/icons/svg/2597/2597227<span class="hljs-variable">.svg</span>",
+    blackLivesMatter: "https://www<span class="hljs-variable">.flaticon</span><span class="hljs-variable">.com</span>/svg/static/icons/svg/3100/3100124<span class="hljs-variable">.svg</span>",
+    franceFlag: "https://www<span class="hljs-variable">.bandeiradafranca</span><span class="hljs-variable">.com</span>", // &lt;===
+}
+
+export default icons;
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="2-adicione-o-idioma-à-lista-de-idiomas"></a><a href="#2-adicione-o-idioma-à-lista-de-idiomas" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. Adicione o idioma à lista de idiomas</h2>
+<p>Em <a href="/site-enums#langsts">enums/langs.ts</a> temos a listagem de todos os idiomas.</p>
+<p>Para que a sua contribuição seja aceita pelo site, você deve adicionar a linguagem nessa estrutura, seguindo o seguinte template:</p>
+<pre><code class="hljs">    {
+<span class="hljs-symbol">        id:</span> <span class="hljs-comment">//ID do idioma, um número que o representa,</span>
+<span class="hljs-symbol">        src:</span> <span class="hljs-comment">//Ícone adicionado no passo anterior. Referencie-o utilizando icons.nomeDoIcone,</span>
+<span class="hljs-symbol">        subtitle:</span> <span class="hljs-comment">//Nome do idioma escrito nele,</span>
+<span class="hljs-symbol">        initials:</span> <span class="hljs-comment">//Sigla que o representa,</span>
+<span class="hljs-symbol">        ref:</span> <span class="hljs-comment">//Referência para ele no site</span>
+    }, 
+</code></pre>
+<p>Veja os exemplos já existentes para Português e Inglês <a href="/site-enums#langsts">aqui</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="3-criando-pasta-de-traduções"></a><a href="#3-criando-pasta-de-traduções" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. Criando pasta de traduções</h2>
+<p>Você precisará criar uma pasta para receber as traduções de texto. Essa pasta deverá ser nomeada com a referência colocada na estrutura acima e ficar na pasta <a href="/site-enums">enums</a>.</p>
+<p>Clique <a href="https://github.com/elasComputacao/Site/tree/master/templates/traducao/enums">aqui</a> para ter acesso a estrutura da pasta, com os templates necessários para as traduções.</p>
+<p>No arquivo <a href="/site-enums#langs-infosts">lang-infos.ts</a>, você apenas precisa copiar e colar o objeto criado na estrutura acima.</p>
+<p>Já em texts.ts você colocará toda a real tradução do site. É dele que a homepage do site irá consumir os textos que serão mostrados aos usuários. Para cada texto, insira a tradução referente à estrutura original em Português, que pode ser vista <a href="/site-enums#textsts">aqui</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="4-criando-a-referência-para-a-tradução"></a><a href="#4-criando-a-referência-para-a-tradução" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4. Criando a referência para a tradução</h2>
+<p>Depois de ter o conteúdo traduzido, agora iremos criar a referência para que ela possa ser acessada!</p>
+<p>Dentro da pasta <a href="/site-pages">pages</a> crie também uma pasta nomeada com a referência para o idioma. Dentro da pasta deverão ter os arquivos <a href="/site-pages#indextsx">index.tsx</a> e <a href="/site-pages#scheduletsx">schedule.tsx</a>, que você pode ter acessar um template <a href="https://github.com/elasComputacao/Site/tree/master/templates/traducao/pages">aqui</a>.</p>
+<p>Em <strong>index.tsx</strong>, importe os enums referentes ao idioma, adicionando a referência no caminho:</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> {bio, projects, sections, supports, buttonTexts, noEvents} <span class="hljs-keyword">from</span> <span class="hljs-string">'../../enums/referencia_do_idioma/texts'</span>
+<span class="hljs-keyword">import</span> {langInfo} <span class="hljs-keyword">from</span> <span class="hljs-string">'../../enums/referencia_do_idioma/lang-infos'</span>
+</code></pre>
+<p>Após isso, a página inicial já deverá estar traduzida.</p>
+<p>Para <strong>schedule.tsx</strong>, importe também os enums referentes ao idioma com a referência no caminho:</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> {schedule} <span class="hljs-keyword">from</span> <span class="hljs-string">'../../enums/referencia_do_idioma/texts'</span>
+</code></pre>
+<p>Feito isso, o idioma deverá ser adicionado ao site e estará pronto para ser acessado!</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/DocsSiteElas/docs/site-pages"><span class="arrow-prev">← </span><span>Pages</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#1-adicione-um-ícone">1. Adicione um ícone</a></li><li><a href="#2-adicione-o-idioma-à-lista-de-idiomas">2. Adicione o idioma à lista de idiomas</a></li><li><a href="#3-criando-pasta-de-traduções">3. Criando pasta de traduções</a></li><li><a href="#4-criando-a-referência-para-a-tradução">4. Criando a referência para a tradução</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/DocsSiteElas/" class="nav-home"><img src="/DocsSiteElas/img/elas_horizontal.png" alt="Site Elas@Computação Docs"/></a><div><h5>Docs</h5><a href="/DocsSiteElas/docs/site">Projetos</a></div><div><h5>Community</h5><a href="https://www.instagram.com/elascomputacao/" target="_blank" rel="noreferrer noopener">Instagram</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/DocsSiteElas/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/DocsSiteElas/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Elas@Computação</section></footer></div></body></html>

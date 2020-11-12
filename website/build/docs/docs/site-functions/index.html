@@ -1,0 +1,230 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Functions · Site Elas@Computação Docs</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Visão geral"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Functions · Site Elas@Computação Docs"/><meta property="og:type" content="website"/><meta property="og:url" content="https://elascomputacao.github.io/DocsSiteElas/"/><meta property="og:description" content="## Visão geral"/><meta property="og:image" content="https://elascomputacao.github.io/DocsSiteElas/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://elascomputacao.github.io/DocsSiteElas/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/DocsSiteElas/img/logo_png2.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://elascomputacao.github.io/DocsSiteElas/blog/atom.xml" title="Site Elas@Computação Docs Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://elascomputacao.github.io/DocsSiteElas/blog/feed.xml" title="Site Elas@Computação Docs Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/DocsSiteElas/js/scrollSpy.js"></script><link rel="stylesheet" href="/DocsSiteElas/css/main.css"/><script src="/DocsSiteElas/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/DocsSiteElas/"><img class="logo" src="/DocsSiteElas/img/elas_horizontal.png" alt="Site Elas@Computação Docs"/><h2 class="headerTitleWithLogo">Site Elas@Computação Docs</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/DocsSiteElas/docs/site" target="_self">Docs</a></li><li class=""><a href="/DocsSiteElas/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Site</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Projetos</h3><ul class=""><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site">Site</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Site</h3><ul class=""><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-get-started">Primeiros Passos</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-struct">Estrutura</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-enums">Enums</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/DocsSiteElas/docs/site-functions">Functions</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-components">Components</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-pages">Pages</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-translation">Como adicionar uma tradução?</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Functions</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="visão-geral"></a><a href="#visão-geral" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Visão geral</h2>
+<p>O diretório functions compreende as funções utilizadas na lógica do front-end do site.</p>
+<p>Nele existem dois arquivos:</p>
+<ul>
+<li><p><strong>connections.ts</strong>: Arquivo com funções que se conectam a APIs</p></li>
+<li><p><strong>functions.ts</strong>: Arquivo com funções de lógica dos componentes</p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="connectionsts"></a><a href="#connectionsts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>connections.ts</h2>
+<p>Em connections.ts existem funções que se conectam a APIs e retornam dados úteis para compor o front-end de maneira mais automatizada.</p>
+<p>Visão geral do arquivo:</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> { Octokit } <span class="hljs-keyword">from</span> <span class="hljs-string">"@octokit/rest"</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUsersFromGitHub</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">const</span> octokit = <span class="hljs-keyword">new</span> Octokit(
+        {
+          <span class="hljs-attr">auth</span>: process.env.REACT_APP_GITHUB_TOKEN,
+          <span class="hljs-attr">baseUrl</span>: <span class="hljs-string">'https://api.github.com'</span>,
+        }
+      );
+  
+      <span class="hljs-keyword">return</span>(octokit.orgs.listMembers({
+        <span class="hljs-attr">org</span>: <span class="hljs-string">"elasComputacao"</span>,
+        <span class="hljs-attr">per_page</span>: <span class="hljs-number">100</span>,
+        <span class="hljs-attr">type</span>: <span class="hljs-string">""</span>,
+      }));
+}   
+</code></pre>
+<p>Abaixo estão elencadas as funções existentes no arquivo.</p>
+<h3><a class="anchor" aria-hidden="true" id="getusersfromgithub"></a><a href="#getusersfromgithub" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>getUsersFromGitHub</h3>
+<p>Essa função acessa a API do GitHub com a finalidade de retornar as membras da organização. Até então, são pegas apenas aquelas que mantém a privacidade da organização como pública em seu perfil.</p>
+<p>Abaixo está o escopo da função:</p>
+<pre><code class="hljs"><span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUsersFromGitHub</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">const</span> octokit = <span class="hljs-keyword">new</span> Octokit( 
+        {
+          <span class="hljs-attr">auth</span>: process.env.REACT_APP_GITHUB_TOKEN,
+          <span class="hljs-attr">baseUrl</span>: <span class="hljs-string">'https://api.github.com'</span>,
+        }
+      ); <span class="hljs-comment">//Instanciando um objeto Octokit, passando um objeto com a autenticação e a URL da API do GitHub</span>
+  
+      <span class="hljs-keyword">return</span>(octokit.orgs.listMembers({
+        <span class="hljs-attr">org</span>: <span class="hljs-string">"elasComputacao"</span>,
+        <span class="hljs-attr">per_page</span>: <span class="hljs-number">100</span>,
+        <span class="hljs-attr">type</span>: <span class="hljs-string">""</span>,
+      })); <span class="hljs-comment">//Retornando array com objetos que representam as membras da comunidade.</span>
+}   
+</code></pre>
+<p>Foi utilizada a biblioteca <a href="https://github.com/octokit">Octokit</a>, um cliente para a API do GitHub, para fazer o acesso à mesma. Mais informações sobre seu funcionamento na <a href="https://octokit.github.io/rest.js/v18">documentação do Octokit</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="functionsts"></a><a href="#functionsts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>functions.ts</h2>
+<p>No arquivo functions.ts temos funções que atuam na lógica do front-end do site.</p>
+<p>Visão geral do arquivo:</p>
+<pre><code class="hljs">export function arrayShuffle(<span class="hljs-meta">array</span>:any[]) {
+    const size = <span class="hljs-meta">array</span>.<span class="hljs-meta">length</span>;
+    
+    for (let <span class="hljs-meta">index</span> = 0; <span class="hljs-meta">index</span> &lt; <span class="hljs-meta">array</span>.<span class="hljs-meta">length</span>; <span class="hljs-meta">index</span>++) {
+        const randomNumber = Math<span class="hljs-meta">.floor(</span>Math.random() <span class="hljs-comment">* size);</span>
+        const element1 = <span class="hljs-meta">array</span>[<span class="hljs-meta">index</span>];
+        const element2 = <span class="hljs-meta">array</span>[randomNumber];
+        <span class="hljs-meta">array</span>[randomNumber] = element1;
+        <span class="hljs-meta">array</span>[<span class="hljs-meta">index</span>] = element2;
+    }
+}
+
+export function mouseMonitoring() {
+    const header = <span class="hljs-meta">window</span>.document.getElementById(<span class="hljs-string">"header"</span>)
+    const main = <span class="hljs-meta">window</span>.document.getElementById(<span class="hljs-string">"main"</span>)
+    const scroll = <span class="hljs-meta">window</span>.scrollY;
+
+    <span class="hljs-meta">window</span>.addEventListener(<span class="hljs-string">'mousemove'</span>, (event) =&gt; {
+        var pos = event.clientY;
+        <span class="hljs-meta">if</span> (scroll &gt; 380 <span class="hljs-variable">&amp;&amp;</span> ((pos &gt;= 0 <span class="hljs-variable">&amp;&amp;</span> pos &lt; 100 <span class="hljs-variable">&amp;&amp;</span> <span class="hljs-meta">window</span>.innerWidth &lt; 1080) || (pos &gt;= 0 <span class="hljs-variable">&amp;&amp;</span> pos &lt; 140 <span class="hljs-variable">&amp;&amp;</span> <span class="hljs-meta">window</span>.innerWidth &gt; 1080))) {
+          header.style.position = <span class="hljs-string">"fixed"</span>;
+          main.style.marginTop = <span class="hljs-meta">window</span>.innerWidth &lt; 1080 ? <span class="hljs-string">"76px"</span> : <span class="hljs-string">"101px"</span>;
+        } <span class="hljs-meta">else</span> {
+          header.style.position = <span class="hljs-string">"relative"</span>;
+          main.style.marginTop = <span class="hljs-string">"0px"</span>;    
+        }
+    })
+}
+</code></pre>
+<p>Abaixo temos detalhes sobre as funções implementadas.</p>
+<h3><a class="anchor" aria-hidden="true" id="arrayshufflearray-any"></a><a href="#arrayshufflearray-any" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>arrayShuffle(array: any[])</h3>
+<p>Essa função recebe um array como entrada e troca os elementos nas posições do mesmo de forma aleatória. Ela é utilizada para a randomização do componente do Painel de membras do site, para que todas possam aparecer em evidência.</p>
+<pre><code class="hljs">export function arrayShuffle(array:any[]) {
+   <span class="hljs-built_in"> const </span>size = array.length; //Tamanho do<span class="hljs-built_in"> array </span>de entrada
+    
+    for (let index = 0; index &lt; array.length; index++) { //Iterando sobre o<span class="hljs-built_in"> array
+</span>        
+        //Utilizando a função random de Math para gerar um número aleatório no intervalo [0, size[
+       <span class="hljs-built_in"> const </span>randomNumber = Math.floor(Math.random() * size); 
+
+        //Pegando os elementos que iremos trocar de posição
+       <span class="hljs-built_in"> const </span>element1 = array[index];
+       <span class="hljs-built_in"> const </span>element2 = array[randomNumber];
+
+        //Trocando os elementos de posição
+        array[randomNumber] = element1;
+        array[index] = element2;
+    }
+}
+</code></pre>
+<p>Os elementos são trocados n (tamanho do array) vezes dentro do array e de forma aleatória, o que assegura a aleatoriedade das posições.</p>
+<h3><a class="anchor" aria-hidden="true" id="mousemonitoring"></a><a href="#mousemonitoring" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>mouseMonitoring()</h3>
+<p>Essa função é responsável pelo efeito de esconder/aparecer do header na página. Com ela, podemos monitorar a posição do mouse na tela e mudar a propriedade de estilo do cabeçalho de relative para fixed, dependendo da posição que o usuário está passando o cursor.</p>
+<pre><code class="hljs"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mouseMonitoring</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">const</span> header = <span class="hljs-built_in">window</span>.document.getElementById(<span class="hljs-string">"header"</span>) <span class="hljs-comment">//Pegando elemento do header por id</span>
+    <span class="hljs-keyword">const</span> main = <span class="hljs-built_in">window</span>.document.getElementById(<span class="hljs-string">"main"</span>) <span class="hljs-comment">//Pegando elemento do main por id</span>
+    <span class="hljs-keyword">const</span> scroll = <span class="hljs-built_in">window</span>.scrollY; <span class="hljs-comment">//Pegando a posição de scroll vertical da página</span>
+
+    <span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">'mousemove'</span>, <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> { <span class="hljs-comment">// Monitorando o evento de movimento do mouse</span>
+        <span class="hljs-keyword">var</span> pos = event.clientY; <span class="hljs-comment">//Pegando a posição atual do mouse na vertical</span>
+
+        <span class="hljs-comment">//Verificando se as coordenadas do mouse na tela condizem com a posição que </span>
+        <span class="hljs-comment">//o header deve aparecer. Caso seja, mudamos de relative para fixed, caso não, </span>
+        <span class="hljs-comment">//mudamos de fixed para relative.</span>
+        <span class="hljs-keyword">if</span> (scroll &gt; <span class="hljs-number">380</span> &amp;&amp; 
+        ((pos &gt;= <span class="hljs-number">0</span> &amp;&amp; pos &lt; <span class="hljs-number">100</span> &amp;&amp; <span class="hljs-built_in">window</span>.innerWidth &lt; <span class="hljs-number">1080</span>) || 
+        (pos &gt;= <span class="hljs-number">0</span> &amp;&amp; pos &lt; <span class="hljs-number">140</span> &amp;&amp; <span class="hljs-built_in">window</span>.innerWidth &gt; <span class="hljs-number">1080</span>))) {
+          header.style.position = <span class="hljs-string">"fixed"</span>;
+          main.style.marginTop = <span class="hljs-built_in">window</span>.innerWidth &lt; <span class="hljs-number">1080</span> ? <span class="hljs-string">"76px"</span> : <span class="hljs-string">"101px"</span>; <span class="hljs-comment">//Ajuste da posição vertical do main na mudança de posição do header</span>
+        } <span class="hljs-keyword">else</span> {
+          header.style.position = <span class="hljs-string">"relative"</span>;
+          main.style.marginTop = <span class="hljs-string">"0px"</span>;    <span class="hljs-comment">//Ajuste da posição vertical do main na mudança de posição do header</span>
+        }
+    })
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="haseventsmonthevents-any"></a><a href="#haseventsmonthevents-any" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>hasEventsMonth(events: any[])</h3>
+<p>Essa função é reponsável por monitorar a presença de eventos existentes no mês atual. Ela varre um array de eventos, passado como parâmetro e se encontrado pelo menos um evento para o mês, retorna true, caso contrário, retorna false.</p>
+<pre><code class="hljs"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hasEventsMonth</span>(<span class="hljs-params">events: any[]</span>) </span>{
+    
+  <span class="hljs-comment">//Iterando sobre o array passado</span>
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span>; index &lt; events.length; index++) {
+    <span class="hljs-keyword">const</span> element = events[index]; <span class="hljs-comment">//Pegando o elemento da vez </span>
+
+    <span class="hljs-comment">//Se o mês for igual ao mês atual, retorna true</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Number</span>(element.month) == <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getMonth() + <span class="hljs-number">1</span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    }
+  }    
+
+  <span class="hljs-comment">//Caso não encontre eventos para o mês, retorna false</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="setautosupportsupportsobject"></a><a href="#setautosupportsupportsobject" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>setAutoSupport(supportsObject)</h3>
+<p>Essa função é responsável por identificar qual a causa que deve ser mostrada no <a href="./site-components#iconstatus">IconStatus</a>. Ela pega as informações de <a href="./site-enums#supportsts">supports.ts</a>, identifica se há alguma causa em campanha no mês, caso não haja, sorteia um de forma aleatória e retorna um objeto que representa uma causa (mais detalhes em <a href="./site-enums#supports">supports</a>).</p>
+<pre><code class="hljs">export function setAutoSupport(supportsObject) {
+  
+  <span class="hljs-keyword">const</span> <span class="hljs-built_in">month</span> = <span class="hljs-keyword">new</span> Date().getMonth() + <span class="hljs-number">1</span>; <span class="hljs-comment">//Pega o mês atual</span>
+  
+  <span class="hljs-comment">//Pega as chaves de supportMonth, que representam os meses das campanhas, e os coloca em um array </span>
+  <span class="hljs-keyword">const</span> keysMonth = <span class="hljs-keyword">Object</span>.keys(supportsMonth); 
+
+  <span class="hljs-comment">//Caso haja uma campanha para o mês atual...</span>
+  <span class="hljs-keyword">if</span> (keysMonth.includes(<span class="hljs-keyword">String</span>(<span class="hljs-built_in">month</span>))) {
+    <span class="hljs-keyword">const</span> <span class="hljs-built_in">key</span> = supportsMonth[<span class="hljs-built_in">month</span>]; <span class="hljs-comment">//Pegando a chave que referencia a campanha (o nome dela)</span>
+    <span class="hljs-keyword">return</span> supportsObject[<span class="hljs-built_in">key</span>]; <span class="hljs-comment">//Retornando o objeto referente a campanha do mês</span>
+  }
+
+  <span class="hljs-comment">//Caso não haja uma campanha para o mês...</span>
+
+  <span class="hljs-comment">//Gerando um índice aleatório entre 0 e o tamanho do array supportAllTime</span>
+  <span class="hljs-keyword">const</span> <span class="hljs-built_in">random</span> = Math.<span class="hljs-built_in">floor</span>(supportsAllTime.length * Math.<span class="hljs-built_in">random</span>());
+  
+  <span class="hljs-comment">//Pegando a chave que referencia a campanha (o nome dela)</span>
+  <span class="hljs-keyword">const</span> <span class="hljs-built_in">key</span> = supportsAllTime[<span class="hljs-built_in">random</span>];
+
+  <span class="hljs-comment">//Retornando o objeto a campanha sorteada de forma aleatória  </span>
+  <span class="hljs-keyword">return</span> supportsObject[<span class="hljs-built_in">key</span>];
+
+}
+</code></pre>
+<pre><code class="hljs"></code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/DocsSiteElas/docs/site-enums"><span class="arrow-prev">← </span><span>Enums</span></a><a class="docs-next button" href="/DocsSiteElas/docs/site-components"><span>Components</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#visão-geral">Visão geral</a></li><li><a href="#connectionsts">connections.ts</a><ul class="toc-headings"><li><a href="#getusersfromgithub">getUsersFromGitHub</a></li></ul></li><li><a href="#functionsts">functions.ts</a><ul class="toc-headings"><li><a href="#arrayshufflearray-any">arrayShuffle(array: any[])</a></li><li><a href="#mousemonitoring">mouseMonitoring()</a></li><li><a href="#haseventsmonthevents-any">hasEventsMonth(events: any[])</a></li><li><a href="#setautosupportsupportsobject">setAutoSupport(supportsObject)</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/DocsSiteElas/" class="nav-home"><img src="/DocsSiteElas/img/elas_horizontal.png" alt="Site Elas@Computação Docs"/></a><div><h5>Docs</h5><a href="/DocsSiteElas/docs/site">Projetos</a></div><div><h5>Community</h5><a href="https://www.instagram.com/elascomputacao/" target="_blank" rel="noreferrer noopener">Instagram</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/DocsSiteElas/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/DocsSiteElas/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Elas@Computação</section></footer></div></body></html>

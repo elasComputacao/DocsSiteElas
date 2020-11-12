@@ -1,0 +1,490 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Enums · Site Elas@Computação Docs</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Visão geral"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Enums · Site Elas@Computação Docs"/><meta property="og:type" content="website"/><meta property="og:url" content="https://elascomputacao.github.io/DocsSiteElas/"/><meta property="og:description" content="## Visão geral"/><meta property="og:image" content="https://elascomputacao.github.io/DocsSiteElas/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://elascomputacao.github.io/DocsSiteElas/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/DocsSiteElas/img/logo_png2.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://elascomputacao.github.io/DocsSiteElas/blog/atom.xml" title="Site Elas@Computação Docs Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://elascomputacao.github.io/DocsSiteElas/blog/feed.xml" title="Site Elas@Computação Docs Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/DocsSiteElas/js/scrollSpy.js"></script><link rel="stylesheet" href="/DocsSiteElas/css/main.css"/><script src="/DocsSiteElas/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/DocsSiteElas/"><img class="logo" src="/DocsSiteElas/img/elas_horizontal.png" alt="Site Elas@Computação Docs"/><h2 class="headerTitleWithLogo">Site Elas@Computação Docs</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/DocsSiteElas/docs/site" target="_self">Docs</a></li><li class=""><a href="/DocsSiteElas/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Site</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Projetos</h3><ul class=""><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site">Site</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Site</h3><ul class=""><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-get-started">Primeiros Passos</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-struct">Estrutura</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/DocsSiteElas/docs/site-enums">Enums</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-functions">Functions</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-components">Components</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-pages">Pages</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-translation">Como adicionar uma tradução?</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Enums</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="visão-geral"></a><a href="#visão-geral" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Visão geral</h2>
+<p>Na pasta enums encontramos a seguinte estrutura:</p>
+<p>Duas pastas, referentes às informações que diferem em cada uma das traduções do site:</p>
+<ul>
+<li><strong>en</strong>: Pasta com todas as informações para a versão em inglês do site</li>
+<li><strong>pt</strong>: Pasta com todas as informações para a versão em português do site</li>
+</ul>
+<p>Arquivos avulsos, que reunem informações que pertencem a todas as traduções:</p>
+<ul>
+<li><p><strong>icons.ts</strong>: Arquivo com todos os endereços de ícones utilizados no site</p></li>
+<li><p><strong>infos.ts</strong>: Informações gerais, como endereço e e-mail</p></li>
+<li><p><strong>langs.ts</strong>: Linguagens disponíveis no site</p></li>
+<li><p><strong>social-network.ts</strong>: Endereços de redes sociais</p></li>
+<li><p><strong>events.ts</strong>: Eventos agendados</p></li>
+<li><p><strong>supports.ts</strong>: Arquivo com as causas suportadas pelo Elas organizados por apoiados em uma época do ano (derivados de campanhas de concientização) ou o tempo inteiro.</p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="traduções"></a><a href="#traduções" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Traduções</h2>
+<p>As pastas referentes às traduções seguem a mesma estrutura:</p>
+<ul>
+<li><p><strong>lang-infos.ts</strong>: Informações gerais da língua</p></li>
+<li><p><strong>texts.ts</strong>: Informações textuais e conteúdo das páginas</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="langs-infosts"></a><a href="#langs-infosts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>langs-infos.ts</h3>
+<p>Segue abaixo a estrutura geral do arquivo langs-infos.ts:</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> icons <span class="hljs-keyword">from</span> <span class="hljs-string">'../icons'</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> langInfo = {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-comment">//ID referente ao idioma</span>
+    <span class="hljs-attr">src</span>: icons.usaFlag, <span class="hljs-comment">//Endereço para o ícone que representa o idioma</span>
+    <span class="hljs-attr">subtitle</span>: <span class="hljs-string">"English"</span>, <span class="hljs-comment">//Título do idioma</span>
+    <span class="hljs-attr">initials</span>: <span class="hljs-string">"en"</span>, <span class="hljs-comment">//Sigla</span>
+    <span class="hljs-attr">ref</span>: <span class="hljs-string">"en"</span> <span class="hljs-comment">//Referência para a rota em que ele é acessado no site</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="textsts"></a><a href="#textsts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>texts.ts</h3>
+<p>O arquivo texts.ts contém várias estruturas, mostradas em conjunto abaixo, porém iremos destrinchá-las uma a uma.</p>
+<pre><code class="hljs">import icons from '../icons'
+import cafeComElas from '../../assets/images/cafe-com-elas.png';
+import hacktoberelas from '../../assets/images/hacktoberelas.png'
+import raioxdelas from '../../assets/images/raiox-delas.png'
+import dev from '../../assets/images/dev-elas.png'
+import { icon } from 'leaflet';
+
+export <span class="hljs-keyword">const</span> sections = {
+    <span class="hljs-keyword">about</span>: <span class="hljs-string">"Sobre"</span>,
+    panel: <span class="hljs-string">"Painel"</span>,
+    projects: <span class="hljs-string">"Projetos"</span>,
+    events: <span class="hljs-string">"Eventos"</span>,
+    contact: <span class="hljs-string">"Contatos"</span>,
+    language: <span class="hljs-string">"Idiomas"</span>,
+    partnerships: <span class="hljs-string">"Parcerias"</span>,
+}
+
+export <span class="hljs-keyword">const</span> supports = {
+    setembroAmarelo: {
+        description: <span class="hljs-string">"O Elas@Computação apoia a campanha do Setembro Amarelo em prevenção ao suicídio. Se você estiver passando por problemas relacionados a sua saúde mental ou conhece alguém que está passando por alguma dificuldade, procure ajuda profissional."</span>,
+        icon: icons.yellowRibbon,
+    },
+    outubroRosa: {
+        description: <span class="hljs-string">"O Elas@Computação apoia a campanha do Outubro Rosa em prevenção ao câncer de mama."</span>,
+        icon: icons.pinkRibbon,
+    },
+    prideMonth: {
+        description: <span class="hljs-string">"O Elas@Computação é favorável a toda e qualquer forma de amor ❤️."</span>,
+        icon: icons.lgbtFlag,
+    },
+    blm: {
+        description: <span class="hljs-string">"Vidas Negras Importam."</span>,
+        icon: icons.blackLivesMatter,
+    }, 
+    novembroAzul: {
+        description: <span class="hljs-string">"O Elas@Computação apoia a campanha do Novembro Azul em prevenção ao câncer de próstata e em atenção à saúde masculina."</span>,
+        icon: icons.blueRibbon,
+    },
+    christmas: {
+        description: <span class="hljs-string">"Boas Festas!"</span>,
+        icon: icons.santaClaus,
+    }
+}
+
+export <span class="hljs-keyword">const</span> projects = [
+    {
+        imageURL: cafeComElas,
+        color: <span class="hljs-string">"#ded1c8"</span>,
+        title: <span class="hljs-string">"Café com Elas"</span>, 
+        description: <span class="hljs-string">"O Café com Elas promove conversas e palestras de mulheres da TI, para estimular discussões voltadas para a área, nosso lugar, espaço e papel, buscando criar um ambiente acolhedor para a participação das meninas na comunidade."</span>,
+        href: <span class="hljs-string">"https://github.com/elasComputacao/CafeComElas"</span>
+    },
+    {
+        imageURL: raioxdelas,
+        color: <span class="hljs-string">""</span>,
+        title: <span class="hljs-string">"Raio-X"</span>, 
+        description: <span class="hljs-string">"Um ambiente web criado com o intuito de mostrar informações sobre a participação das mulheres no curso de Bacharelado em Ciência da Computação na Universidade Federal de Campina Grande, para alertar e motivar a comunidade feminina de TI dentro e fora da UFCG."</span>,
+        href: <span class="hljs-string">"https://github.com/elasComputacao/Raio-X"</span>
+    },
+    {
+        imageURL: hacktoberelas,
+        color: <span class="hljs-string">"#072541"</span>,
+        title: <span class="hljs-string">"HacktoberElas"</span>, 
+        description: <span class="hljs-string">"Quer celebrar o opensource com o Elas@Computação? O HacktoberElas é uma iniciativa criada com o intuito de instigar, iniciar e preparar a comunidade em geral a contribuir com softwares livres!"</span>,
+        href: <span class="hljs-string">"https://github.com/elasComputacao/"</span>
+    },
+    {
+        imageURL: dev,
+        color: <span class="hljs-string">"#e8e8e8"</span>,
+        title: <span class="hljs-string">"Blog no DEV"</span>, 
+        description: <span class="hljs-string">"Estamos no DEV! Um espaço para nossa comunidade produzir e publicar conteúdos sobre tecnologia em geral e também levantar a participação de mulheres brasileiras da TI na plataforma. Segue a gente no DEV!"</span>,
+        href: <span class="hljs-string">"https://dev.to/elascomputacao"</span>
+    }
+]
+
+export <span class="hljs-keyword">const</span> bio = [
+    'Somos uma comunidade nascida na Universidade Federal <span class="hljs-keyword">de</span> Campina Grande em maio <span class="hljs-keyword">de</span> 2017, com o intuito <span class="hljs-keyword">de</span> trazer mais mulheres para o curso <span class="hljs-keyword">de</span> <span class="hljs-keyword">Ci</span>ência da Computação <span class="hljs-keyword">e</span> <span class="hljs-keyword">de</span> gerar uma rede <span class="hljs-keyword">de</span> apoio <span class="hljs-keyword">e</span> visibilidade pautada na sororidade <span class="hljs-keyword">e</span> <span class="hljs-keyword">no</span> empoderamento <span class="hljs-keyword">de</span> todas <span class="hljs-keyword">as</span> meninas <span class="hljs-keyword">que</span> fazem parte desse meio.',
+
+    'Atualmente, cerca <span class="hljs-keyword">de</span> apenas 20% das pessoas <span class="hljs-keyword">que</span> atuam na área <span class="hljs-keyword">de</span> TI <span class="hljs-keyword">no</span> Brasil são mulheres. Isso <span class="hljs-keyword">se</span> deve a uma gama <span class="hljs-keyword">de</span> fatores <span class="hljs-keyword">que</span> vão desde o ambiente escolar, <span class="hljs-keyword">que</span> <span class="hljs-keyword">n</span>ão incentiva o interesse feminino nas <span class="hljs-keyword">STEM</span> (sigla em inglês para <span class="hljs-string">"Ciências, Tecnologias, Engenharias e Matemática"</span>), até na <span class="hljs-keyword">pr</span>ópria vivência acadêmica, <span class="hljs-keyword">que</span> promove a evasão <span class="hljs-keyword">de</span> meninas <span class="hljs-keyword">que</span> adentram em cursos da área pela falta <span class="hljs-keyword">de</span> acolhimento <span class="hljs-keyword">e</span> representatividade.',
+        
+    'Por isso, o Elas@Computação tem como principal objetivo incentivar a entrada, perpetuar <span class="hljs-keyword">e</span> enaltecer <span class="hljs-keyword">as</span> mulheres <span class="hljs-keyword">que</span> já <span class="hljs-keyword">est</span>ão <span class="hljs-keyword">e</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">que</span> desejam adentrar <span class="hljs-keyword">no</span> mundo das Tecnologias da Informação, buscando mudar o cenário <span class="hljs-keyword">de</span> desigualdade <span class="hljs-keyword">de</span> <span class="hljs-keyword">g</span>ênero existente nesse contexto.'
+           
+]
+
+export <span class="hljs-keyword">const</span> buttonTexts = {
+    projectCard: <span class="hljs-string">"Confira"</span>,
+    sectionEvents: <span class="hljs-string">"Confira a agenda"</span>
+}
+
+export <span class="hljs-keyword">const</span> noEvents = <span class="hljs-string">"Nenhum evento confirmado para este mês"</span>
+
+export <span class="hljs-keyword">const</span> schedule = {
+    pageTitle: <span class="hljs-string">"Agenda"</span>,
+    initialTitle: <span class="hljs-string">"Clique em uma data para saber mais"</span>,
+    initialDescription: <span class="hljs-string">"Datas em evidência indicam um evento marcado para o dia"</span>,
+    noEvents: <span class="hljs-string">"Nenhum evento marcado para"</span>,
+}
+</code></pre>
+<p>Para cada idioma, as estruturas deverão ser mantidas, alterando apenas os valores para as devidas traduções.</p>
+<h4><a class="anchor" aria-hidden="true" id="sections"></a><a href="#sections" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>sections</h4>
+<p>A constante sections guarda o nome de todas as seções existentes na homepage.
+Abaixo temos o recorte de como essa estrutura se dá no arquivo pt/texts.ts, com
+o nome das seções em português.</p>
+<pre><code class="hljs">export const sections = {
+<span class="hljs-symbol">    about:</span> <span class="hljs-string">"Sobre"</span>,
+<span class="hljs-symbol">    panel:</span> <span class="hljs-string">"Painel"</span>,
+<span class="hljs-symbol">    projects:</span> <span class="hljs-string">"Projetos"</span>,
+<span class="hljs-symbol">    events:</span> <span class="hljs-string">"Eventos"</span>,
+<span class="hljs-symbol">    contact:</span> <span class="hljs-string">"Contatos"</span>,
+<span class="hljs-symbol">    language:</span> <span class="hljs-string">"Idiomas"</span>,
+<span class="hljs-symbol">    partnerships:</span> <span class="hljs-string">"Parcerias"</span>,
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="supports"></a><a href="#supports" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>supports</h4>
+<p>A constante supports corresponde a um objeto que guarda outros objetos referentes às causas apoiadas pelo Elas@Computação, como mostrado abaixo:</p>
+<pre><code class="hljs">export const supports = {
+<span class="hljs-symbol">    setembroAmarelo:</span> {
+<span class="hljs-symbol">        description:</span> <span class="hljs-string">"O Elas@Computação apoia a campanha do Setembro Amarelo em prevenção ao suicídio. Se você estiver passando por problemas relacionados a sua saúde mental ou conhece alguém que está passando por alguma dificuldade, procure ajuda profissional."</span>,
+<span class="hljs-symbol">        icon:</span> icons.yellowRibbon,
+    },
+<span class="hljs-symbol">    outubroRosa:</span> {
+<span class="hljs-symbol">        description:</span> <span class="hljs-string">"O Elas@Computação apoia a campanha do Outubro Rosa em prevenção ao câncer de mama."</span>,
+<span class="hljs-symbol">        icon:</span> icons.pinkRibbon,
+    },
+<span class="hljs-symbol">    prideMonth:</span> {
+<span class="hljs-symbol">        description:</span> <span class="hljs-string">"O Elas@Computação é favorável a toda e qualquer forma de amor ❤️."</span>,
+<span class="hljs-symbol">        icon:</span> icons.lgbtFlag,
+    },
+<span class="hljs-symbol">    blm:</span> {
+<span class="hljs-symbol">        description:</span> <span class="hljs-string">"Vidas Negras Importam."</span>,
+<span class="hljs-symbol">        icon:</span> icons.blackLivesMatter,
+    }, 
+<span class="hljs-symbol">    novembroAzul:</span> {
+<span class="hljs-symbol">        description:</span> <span class="hljs-string">"O Elas@Computação apoia a campanha do Novembro Azul em prevenção ao câncer de próstata e em atenção à saúde masculina."</span>,
+<span class="hljs-symbol">        icon:</span> icons.blueRibbon,
+    },
+<span class="hljs-symbol">    christmas:</span> {
+<span class="hljs-symbol">        description:</span> <span class="hljs-string">"Boas Festas!"</span>,
+<span class="hljs-symbol">        icon:</span> icons.santaClaus,
+    }
+}
+</code></pre>
+<p>Para cada um desses objetos, temos a descrição do suporte a causa e um caminho para um ícone que a representa, como exemplificado abaixo.</p>
+<pre><code class="hljs"><span class="hljs-symbol">prideMonth:</span> {
+<span class="hljs-symbol">        description:</span> <span class="hljs-string">"O Elas@Computação é favorável a toda e qualquer forma de amor ❤️."</span>, <span class="hljs-comment">//descrição</span>
+<span class="hljs-symbol">        icon:</span> icons.lgbtFlag, <span class="hljs-comment">//ícone</span>
+    }
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="projects"></a><a href="#projects" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>projects</h4>
+<p>A constante projects consiste em uma lista de objetos que compõem os projetos do Elas@Computação, como mostrado abaixo:</p>
+<pre><code class="hljs">export const projects = [
+    {
+<span class="hljs-symbol">        imageURL:</span> cafeComElas,
+<span class="hljs-symbol">        color:</span> <span class="hljs-string">"#ded1c8"</span>,
+<span class="hljs-symbol">        title:</span> <span class="hljs-string">"Café com Elas"</span>, 
+<span class="hljs-symbol">        description:</span> <span class="hljs-string">"O Café com Elas promove conversas e palestras de mulheres da TI, para estimular discussões voltadas para a área, nosso lugar, espaço e papel, buscando criar um ambiente acolhedor para a participação das meninas na comunidade."</span>,
+<span class="hljs-symbol">        href:</span> <span class="hljs-string">"https://github.com/elasComputacao/CafeComElas"</span>
+    },
+    {
+<span class="hljs-symbol">        imageURL:</span> raioxdelas,
+<span class="hljs-symbol">        color:</span> <span class="hljs-string">""</span>,
+<span class="hljs-symbol">        title:</span> <span class="hljs-string">"Raio-X"</span>, 
+<span class="hljs-symbol">        description:</span> <span class="hljs-string">"Um ambiente web criado com o intuito de mostrar informações sobre a participação das mulheres no curso de Bacharelado em Ciência da Computação na Universidade Federal de Campina Grande, para alertar e motivar a comunidade feminina de TI dentro e fora da UFCG."</span>,
+<span class="hljs-symbol">        href:</span> <span class="hljs-string">"https://github.com/elasComputacao/Raio-X"</span>
+    },
+    {
+<span class="hljs-symbol">        imageURL:</span> hacktoberelas,
+<span class="hljs-symbol">        color:</span> <span class="hljs-string">"#072541"</span>,
+<span class="hljs-symbol">        title:</span> <span class="hljs-string">"HacktoberElas"</span>, 
+<span class="hljs-symbol">        description:</span> <span class="hljs-string">"Quer celebrar o opensource com o Elas@Computação? O HacktoberElas é uma iniciativa criada com o intuito de instigar, iniciar e preparar a comunidade em geral a contribuir com softwares livres!"</span>,
+<span class="hljs-symbol">        href:</span> <span class="hljs-string">"https://github.com/elasComputacao/"</span>
+    },
+    {
+<span class="hljs-symbol">        imageURL:</span> dev,
+<span class="hljs-symbol">        color:</span> <span class="hljs-string">"#e8e8e8"</span>,
+<span class="hljs-symbol">        title:</span> <span class="hljs-string">"Blog no DEV"</span>, 
+<span class="hljs-symbol">        description:</span> <span class="hljs-string">"Estamos no DEV! Um espaço para nossa comunidade produzir e publicar conteúdos sobre tecnologia em geral e também levantar a participação de mulheres brasileiras da TI na plataforma. Segue a gente no DEV!"</span>,
+<span class="hljs-symbol">        href:</span> <span class="hljs-string">"https://dev.to/elascomputacao"</span>
+    }
+]
+</code></pre>
+<p>Cada objeto segue a seguinte estrutura:</p>
+<pre><code class="hljs">{
+<span class="hljs-symbol">    imageURL:</span> cafeComElas, <span class="hljs-comment">//Caminho para imagem</span>
+<span class="hljs-symbol">    color:</span> <span class="hljs-string">"#ded1c8"</span>, <span class="hljs-comment">//Cor de fundo da imagem</span>
+<span class="hljs-symbol">    title:</span> <span class="hljs-string">"Café com Elas"</span>,  <span class="hljs-comment">//Título do projeto</span>
+<span class="hljs-symbol">    description:</span> <span class="hljs-string">"O Café com Elas promove conversas e palestras de mulheres da TI, para estimular discussões voltadas para a área, nosso lugar, espaço e papel, buscando criar um ambiente acolhedor para a participação das meninas na comunidade."</span>, <span class="hljs-comment">//Descrição curta do projeto</span>
+<span class="hljs-symbol">    href:</span> <span class="hljs-string">"https://github.com/elasComputacao/CafeComElas"</span> <span class="hljs-comment">//URL para mais detalhes</span>
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="bio"></a><a href="#bio" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>bio</h4>
+<p>A bio consiste em um array, no qual cada elemento que o compõe é referente a um parágrafo da seção &quot;Sobre&quot; do site. A estrutura geral é mostrada abaixo:</p>
+<pre><code class="hljs">export <span class="hljs-keyword">const</span> bio = [
+    'Somos uma comunidade nascida na Universidade Federal <span class="hljs-keyword">de</span> Campina Grande em maio <span class="hljs-keyword">de</span> 2017, com o intuito <span class="hljs-keyword">de</span> trazer mais mulheres para o curso <span class="hljs-keyword">de</span> <span class="hljs-keyword">Ci</span>ência da Computação <span class="hljs-keyword">e</span> <span class="hljs-keyword">de</span> gerar uma rede <span class="hljs-keyword">de</span> apoio <span class="hljs-keyword">e</span> visibilidade pautada na sororidade <span class="hljs-keyword">e</span> <span class="hljs-keyword">no</span> empoderamento <span class="hljs-keyword">de</span> todas <span class="hljs-keyword">as</span> meninas <span class="hljs-keyword">que</span> fazem parte desse meio.',
+
+    'Atualmente, cerca <span class="hljs-keyword">de</span> apenas 20% das pessoas <span class="hljs-keyword">que</span> atuam na área <span class="hljs-keyword">de</span> TI <span class="hljs-keyword">no</span> Brasil são mulheres. Isso <span class="hljs-keyword">se</span> deve a uma gama <span class="hljs-keyword">de</span> fatores <span class="hljs-keyword">que</span> vão desde o ambiente escolar, <span class="hljs-keyword">que</span> <span class="hljs-keyword">n</span>ão incentiva o interesse feminino nas <span class="hljs-keyword">STEM</span> (sigla em inglês para <span class="hljs-string">"Ciências, Tecnologias, Engenharias e Matemática"</span>), até na <span class="hljs-keyword">pr</span>ópria vivência acadêmica, <span class="hljs-keyword">que</span> promove a evasão <span class="hljs-keyword">de</span> meninas <span class="hljs-keyword">que</span> adentram em cursos da área pela falta <span class="hljs-keyword">de</span> acolhimento <span class="hljs-keyword">e</span> representatividade.',
+        
+    'Por isso, o Elas@Computação tem como principal objetivo incentivar a entrada, perpetuar <span class="hljs-keyword">e</span> enaltecer <span class="hljs-keyword">as</span> mulheres <span class="hljs-keyword">que</span> já <span class="hljs-keyword">est</span>ão <span class="hljs-keyword">e</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">que</span> desejam adentrar <span class="hljs-keyword">no</span> mundo das Tecnologias da Informação, buscando mudar o cenário <span class="hljs-keyword">de</span> desigualdade <span class="hljs-keyword">de</span> <span class="hljs-keyword">g</span>ênero existente nesse contexto.'
+           
+]
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="buttontexts"></a><a href="#buttontexts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>buttonTexts</h4>
+<p>Objeto com os textos dos botões existentes na página</p>
+<pre><code class="hljs"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> buttonTexts = {
+    projectCard: <span class="hljs-string">"Confira"</span>,
+    sectionEvents: <span class="hljs-string">"Confira a agenda"</span>
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="noevents"></a><a href="#noevents" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>noEvents</h4>
+<p>Texto da nota de quando não há eventos a serem listados:</p>
+<pre><code class="hljs"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> noEvents = <span class="hljs-string">"Nenhum evento confirmado para este mês"</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="schedule"></a><a href="#schedule" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>schedule</h4>
+<p>Textos da página da agenda:</p>
+<pre><code class="hljs">export const schedule = {
+<span class="hljs-symbol">    pageTitle:</span> <span class="hljs-string">"Agenda"</span>, <span class="hljs-comment">//Título da página</span>
+<span class="hljs-symbol">    initialTitle:</span> <span class="hljs-string">"Clique em uma data para saber mais"</span>, <span class="hljs-comment">//Título inicial do header</span>
+<span class="hljs-symbol">    initialDescription:</span> <span class="hljs-string">"Datas em evidência indicam um evento marcado para o dia"</span>, <span class="hljs-comment">//Descrição inicial</span>
+<span class="hljs-symbol">    noEvents:</span> <span class="hljs-string">"Nenhum evento marcado para"</span>, <span class="hljs-comment">//Mensagem de ausência de evento</span>
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="outros-arquivos"></a><a href="#outros-arquivos" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Outros arquivos</h2>
+<h3><a class="anchor" aria-hidden="true" id="iconsts"></a><a href="#iconsts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>icons.ts</h3>
+<p>Esse arquivo contém todos os ícones utilizados no site. Cada ícone é referenciado por um nome e aponta para uma URL de uma imagem.</p>
+<p>Até então, utilizamos as imagens do site <a href="https://www.flaticon.com/">flaticon.com</a>.</p>
+<pre><code class="hljs">const icons = {
+    <span class="hljs-attribute">rainbowRibbon</span>: "https://www<span class="hljs-variable">.flaticon</span><span class="hljs-variable">.com</span>/svg/static/icons/svg/2292/2292506<span class="hljs-variable">.svg</span>",
+    yellowRibbon: "https://www<span class="hljs-variable">.flaticon</span><span class="hljs-variable">.com</span>/svg/static/icons/svg/240/240485<span class="hljs-variable">.svg</span>",
+    blueRibbon: "https://www<span class="hljs-variable">.flaticon</span><span class="hljs-variable">.com</span>/svg/static/icons/svg/240/240383<span class="hljs-variable">.svg</span>",
+    pinkRibbon: "https://www<span class="hljs-variable">.flaticon</span><span class="hljs-variable">.com</span>/svg/static/icons/svg/242/242132<span class="hljs-variable">.svg</span>",
+    greenRibbon: "https://www<span class="hljs-variable">.flaticon</span><span class="hljs-variable">.com</span>/svg/static/icons/svg/240/240434<span class="hljs-variable">.svg</span>",
+    brasilFlag: "https://www<span class="hljs-variable">.flaticon</span><span class="hljs-variable">.com</span>/svg/static/icons/svg/3022/3022546<span class="hljs-variable">.svg</span>",
+    usaFlag: "https://www<span class="hljs-variable">.flaticon</span><span class="hljs-variable">.com</span>/svg/static/icons/svg/3013/3013911<span class="hljs-variable">.svg</span>",
+    spainFlag: "https://www<span class="hljs-variable">.flaticon</span><span class="hljs-variable">.com</span>/svg/static/icons/svg/3013/3013899<span class="hljs-variable">.svg</span>",
+    lgbtFlag: "https://www<span class="hljs-variable">.flaticon</span><span class="hljs-variable">.com</span>/svg/static/icons/svg/2620/2620727<span class="hljs-variable">.svg</span>",
+    girlPower: "https://www<span class="hljs-variable">.flaticon</span><span class="hljs-variable">.com</span>/svg/static/icons/svg/2597/2597227<span class="hljs-variable">.svg</span>",
+    blackLivesMatter: "https://www<span class="hljs-variable">.flaticon</span><span class="hljs-variable">.com</span>/svg/static/icons/svg/3100/3100124<span class="hljs-variable">.svg</span>",
+    santaClaus: "https://www<span class="hljs-variable">.flaticon</span><span class="hljs-variable">.com</span>/svg/static/icons/svg/601/601393<span class="hljs-variable">.svg</span>"
+}
+
+export default icons;
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="infosts"></a><a href="#infosts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>infos.ts</h3>
+<p>Esse arquivo contém informações gerais de localidade e contato com a nossa comunidade.</p>
+<pre><code class="hljs">const infos = {
+    email: <span class="hljs-string">"elas@computacao.ufcg.edu.br"</span>,
+    location: <span class="hljs-string">"Universidade Federal de Campina Grande - UFCG, Campus Central, R. Aprígio Veloso, 882 - Universitário, Campina Grande - PB - Brasil, 58428-830"</span>,
+}
+
+<span class="hljs-builtin-name">export</span><span class="hljs-built_in"> default </span>infos;
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="langsts"></a><a href="#langsts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>langs.ts</h3>
+<p>Esse arquivo possui uma array com todos os idiomas suportados pelo site. Cada idioma é representado por um objeto, que será mostrado com mais detalhes.</p>
+<p>A configuração geral do arquivo é dado abaixo.</p>
+<pre><code class="hljs">import icons <span class="hljs-keyword">from</span> <span class="hljs-string">'./icons'</span>
+
+const langs = [
+    {
+        id: 0,
+        src: icons.brasilFlag,
+        subtitle: <span class="hljs-string">"Português"</span>,
+        initials: <span class="hljs-string">"pt"</span>,
+        ref: <span class="hljs-string">"/"</span>
+    }, 
+    {
+        id: 1,
+        src: icons.usaFlag,
+        subtitle: <span class="hljs-string">"English"</span>,
+        initials: <span class="hljs-string">"en"</span>,
+        ref: <span class="hljs-string">"en"</span>
+    },
+]
+
+<span class="hljs-builtin-name">export</span><span class="hljs-built_in"> default </span>langs;
+</code></pre>
+<p>Abaixo temos em detalhes a configuração dos objetos que representam os idiomas:</p>
+<pre><code class="hljs">{
+<span class="hljs-symbol">    id:</span> <span class="hljs-number">0</span>, <span class="hljs-comment">//Identificador único numérico para o idioma</span>
+<span class="hljs-symbol">    src:</span> icons.brasilFlag, <span class="hljs-comment">//Caminho para ícone que representa um país que fala o idioma</span>
+<span class="hljs-symbol">    subtitle:</span> <span class="hljs-string">"Português"</span>, <span class="hljs-comment">//Título do idioma</span>
+<span class="hljs-symbol">    initials:</span> <span class="hljs-string">"pt"</span>, <span class="hljs-comment">//Sigla que o define</span>
+<span class="hljs-symbol">    ref:</span> <span class="hljs-string">"/"</span> <span class="hljs-comment">//Referência para acesso da versão traduzida para ele no site</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="partnershipsts"></a><a href="#partnershipsts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>partnerships.ts</h3>
+<p>Esse arquivo guarda todos os parceiros da nossa comunidade e também compreende um array de objetos que representam um parceiro. Abaixo, a visão geral do arquivo:</p>
+<pre><code class="hljs">import pet <span class="hljs-keyword">from</span> <span class="hljs-string">'../assets/images/pet.png'</span>;
+import mulherTech <span class="hljs-keyword">from</span> <span class="hljs-string">'../assets/images/mulher-tech.png'</span>
+
+const partnerships = [
+    {
+        title: <span class="hljs-string">"OpenDev"</span>,
+        href: <span class="hljs-string">"https://opendevufcg.org/"</span>,
+        pic: <span class="hljs-string">"https://avatars2.githubusercontent.com/u/42285400?s=200&amp;v=4"</span>,
+    },
+    {
+        title: <span class="hljs-string">"CAESI"</span>,
+        href: <span class="hljs-string">"https://caesiufcg.github.io/"</span>,
+        pic: <span class="hljs-string">"https://avatars0.githubusercontent.com/u/37838513?s=200&amp;v=4"</span>,
+    },
+    {
+        title: <span class="hljs-string">"PyLadies - PB"</span>,
+        href: <span class="hljs-string">"https://github.com/pyladiespb-org"</span>,
+        pic: <span class="hljs-string">"https://avatars0.githubusercontent.com/u/44339004?s=200&amp;v=4"</span>,
+    },
+    {
+        title: <span class="hljs-string">"PET Computação"</span>,
+        href: <span class="hljs-string">"https://www.dsc.ufcg.edu.br/~pet/"</span>,
+        pic: pet,
+    },
+    {
+        title: <span class="hljs-string">"Mulher Tech Sim Senhor"</span>,
+        href: <span class="hljs-string">"http://mulhertechsim.sr/"</span>,
+        pic: mulherTech,
+    }
+]
+
+<span class="hljs-builtin-name">export</span><span class="hljs-built_in"> default </span>partnerships;
+</code></pre>
+<p>Em detalhes, um objeto que representa um parceiro segue a seguinte configuração:</p>
+<pre><code class="hljs">{
+<span class="hljs-symbol">    title:</span> <span class="hljs-string">"OpenDev"</span>,<span class="hljs-comment">//Nome do parceiro</span>
+<span class="hljs-symbol">    href:</span> <span class="hljs-string">"https://opendevufcg.org/"</span>,<span class="hljs-comment">//URL para site ou outro portal de mais informações sobre</span>
+<span class="hljs-symbol">    pic:</span> <span class="hljs-string">"https://avatars2.githubusercontent.com/u/42285400?s=200&amp;v=4"</span>,<span class="hljs-comment">//URL ou caminho para imagem ou logo do parceiro</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="social-networkts"></a><a href="#social-networkts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>social-network.ts</h3>
+<p>Esse arquivo compreende todas as redes sociais acessadas a partir do site.</p>
+<pre><code class="hljs">const socialNetwork = {
+    github: <span class="hljs-string">"https://github.com"</span>,
+    githubElas: <span class="hljs-string">"https://github.com/elasComputacao"</span>,
+    instagramElas: <span class="hljs-string">"https://www.instagram.com/elascomputacao"</span>,
+}
+
+<span class="hljs-builtin-name">export</span><span class="hljs-built_in"> default </span>socialNetwork;
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="eventsts"></a><a href="#eventsts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>events.ts</h3>
+<p>O arquivo events.ts consiste em um array de objetos que representam um evento da comunidade, como mostrado abaixo:</p>
+<pre><code class="hljs">const events = [
+    {
+        title: <span class="hljs-string">"Café com Elas"</span>,
+        description: <span class="hljs-string">'"Café com Elas" na programação da Jornada Acadêmica Computação@UFCG.'</span>,
+        day: <span class="hljs-string">"5"</span>,
+        month: <span class="hljs-string">"11"</span>,
+        year: <span class="hljs-string">"2020"</span>,
+        time: <span class="hljs-string">"20h"</span>,
+        local: <span class="hljs-string">"Discord CCC"</span>,
+        pageURL: <span class="hljs-string">""</span>,
+        eventURL: <span class="hljs-string">""</span>,
+    },
+]
+
+<span class="hljs-builtin-name">export</span><span class="hljs-built_in"> default </span>events;
+</code></pre>
+<p>A estrutura dos objetos segue o seguinte padrão:</p>
+<pre><code class="hljs">{
+    <span class="hljs-attribute">title</span>: <span class="hljs-string">"Café com Elas"</span>, <span class="hljs-comment">//Título do evento</span>
+    <span class="hljs-attribute">description</span>: <span class="hljs-string">'"Café com Elas" na programação da Jornada Acadêmica Computação@UFCG.'</span>, <span class="hljs-comment">//Descrição breve do evento</span>
+    <span class="hljs-attribute">day</span>: <span class="hljs-string">"5"</span>, <span class="hljs-comment">//Dia </span>
+    <span class="hljs-attribute">month</span>: <span class="hljs-string">"11"</span>, <span class="hljs-comment">//Mês</span>
+    <span class="hljs-attribute">year</span>: <span class="hljs-string">"2020"</span>, <span class="hljs-comment">//Ano</span>
+    <span class="hljs-attribute">time</span>: <span class="hljs-string">"20h"</span>, <span class="hljs-comment">//Horário</span>
+    <span class="hljs-attribute">local</span>: <span class="hljs-string">"Discord CCC"</span>, <span class="hljs-comment">//Local do evento</span>
+    <span class="hljs-attribute">pageURL</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">//URL para página do evento</span>
+    <span class="hljs-attribute">eventURL</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">//URL para evento em agenda</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="supportsts"></a><a href="#supportsts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>supports.ts</h3>
+<p>Arquivo que organiza as causas suportadas pelo Elas@Computação por suportes a campanhas em um período do ano ou causas sociais, de modo a automatizar a forma que são mostradas no site.</p>
+<p>Abaixo temos a visão geral do arquivo:</p>
+<pre><code class="hljs"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> supportsMonth = {
+    <span class="hljs-number">6</span>: <span class="hljs-string">"prideMonth"</span>,
+    <span class="hljs-number">9</span>: <span class="hljs-string">"setembroAmarelo"</span>,
+    <span class="hljs-number">10</span>: <span class="hljs-string">"outubroRosa"</span>,
+    <span class="hljs-number">11</span>: <span class="hljs-string">"novembroAzul"</span>,
+    <span class="hljs-number">12</span>: <span class="hljs-string">"christmas"</span>,
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> supportsAllTime = [
+    <span class="hljs-string">"prideMonth"</span>, <span class="hljs-string">"blm"</span>
+]
+</code></pre>
+<p>A primeira estrutura é um objeto que tem como chave um número que representa o mês que uma causa é apoiada, derivada de uma campanha de concientização. Desse modo, podemos deixar que durante toda a duração do mês esse suporte seja mostrado no site.</p>
+<pre><code class="hljs"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> supportsMonth = {
+    <span class="hljs-number">6</span>: <span class="hljs-string">"prideMonth"</span>,
+    <span class="hljs-number">9</span>: <span class="hljs-string">"setembroAmarelo"</span>,
+    <span class="hljs-number">10</span>: <span class="hljs-string">"outubroRosa"</span>,
+    <span class="hljs-number">11</span>: <span class="hljs-string">"novembroAzul"</span>,
+    <span class="hljs-number">12</span>: <span class="hljs-string">"christmas"</span>,
+}
+</code></pre>
+<p>Já a segunda estrutura é um array com o nome de todas as causas que são apoiadas, mas não possuem em si uma campanha de concientização que se prolonga em um mês. Esses são mostrados no site de forma aleatória, quando não há uma causa específica para o mês em questão.</p>
+<pre><code class="hljs"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> supportsAllTime = [
+    <span class="hljs-string">"prideMonth"</span>, <span class="hljs-string">"blm"</span>
+]
+</code></pre>
+<p>Detalhes sobre o nome das causas e como esses objetos são organizados em <a href="./site-enums#supports">supports</a>.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/DocsSiteElas/docs/site-struct"><span class="arrow-prev">← </span><span>Estrutura</span></a><a class="docs-next button" href="/DocsSiteElas/docs/site-functions"><span>Functions</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#visão-geral">Visão geral</a></li><li><a href="#traduções">Traduções</a><ul class="toc-headings"><li><a href="#langs-infosts">langs-infos.ts</a></li><li><a href="#textsts">texts.ts</a></li></ul></li><li><a href="#outros-arquivos">Outros arquivos</a><ul class="toc-headings"><li><a href="#iconsts">icons.ts</a></li><li><a href="#infosts">infos.ts</a></li><li><a href="#langsts">langs.ts</a></li><li><a href="#partnershipsts">partnerships.ts</a></li><li><a href="#social-networkts">social-network.ts</a></li><li><a href="#eventsts">events.ts</a></li><li><a href="#supportsts">supports.ts</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/DocsSiteElas/" class="nav-home"><img src="/DocsSiteElas/img/elas_horizontal.png" alt="Site Elas@Computação Docs"/></a><div><h5>Docs</h5><a href="/DocsSiteElas/docs/site">Projetos</a></div><div><h5>Community</h5><a href="https://www.instagram.com/elascomputacao/" target="_blank" rel="noreferrer noopener">Instagram</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/DocsSiteElas/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/DocsSiteElas/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Elas@Computação</section></footer></div></body></html>

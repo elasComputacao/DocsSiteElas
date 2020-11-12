@@ -1,0 +1,516 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Pages · Site Elas@Computação Docs</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="O diretório src/pages, por padrão do Gatsby, é onde as páginas do site deverão ser postas."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Pages · Site Elas@Computação Docs"/><meta property="og:type" content="website"/><meta property="og:url" content="https://elascomputacao.github.io/DocsSiteElas/"/><meta property="og:description" content="O diretório src/pages, por padrão do Gatsby, é onde as páginas do site deverão ser postas."/><meta property="og:image" content="https://elascomputacao.github.io/DocsSiteElas/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://elascomputacao.github.io/DocsSiteElas/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/DocsSiteElas/img/logo_png2.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://elascomputacao.github.io/DocsSiteElas/blog/atom.xml" title="Site Elas@Computação Docs Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://elascomputacao.github.io/DocsSiteElas/blog/feed.xml" title="Site Elas@Computação Docs Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/DocsSiteElas/js/scrollSpy.js"></script><link rel="stylesheet" href="/DocsSiteElas/css/main.css"/><script src="/DocsSiteElas/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/DocsSiteElas/"><img class="logo" src="/DocsSiteElas/img/elas_horizontal.png" alt="Site Elas@Computação Docs"/><h2 class="headerTitleWithLogo">Site Elas@Computação Docs</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/DocsSiteElas/docs/site" target="_self">Docs</a></li><li class=""><a href="/DocsSiteElas/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Site</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Projetos</h3><ul class=""><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site">Site</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Site</h3><ul class=""><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-get-started">Primeiros Passos</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-struct">Estrutura</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-enums">Enums</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-functions">Functions</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-components">Components</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/DocsSiteElas/docs/site-pages">Pages</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-translation">Como adicionar uma tradução?</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Pages</h1></header><article><div><span><p>O diretório src/pages, por padrão do Gatsby, é onde as páginas do site deverão ser postas.</p>
+<h2><a class="anchor" aria-hidden="true" id="visão-geral"></a><a href="#visão-geral" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Visão geral</h2>
+<p>Em geral, na raiz da pasta pages temos os arquivos <strong>404.tsx</strong>, referente a página de erro 404, <strong>index.tsx</strong> e <strong>schedule.tsx</strong>, que são referentes à versão em português do site.</p>
+<p>Para cada idioma disponível, temos uma pasta nomeada com a sigla que representa esse idioma. Dentro da pasta de cada idioma temos também os arquivos <strong>index.tsx</strong> e <strong>schedule.tsx</strong>.</p>
+<p>Vejamos abaixo mais detalhes desses arquivos:</p>
+<ul>
+<li><p><strong>index.tsx</strong>: Em cada versão de idioma, o index.tsx se refere a página inicial do site. O Gatsby reconhece arquivos nomeados dessa forma como a primeira página a ser lida, desse modo, ao acessar o site com a rota do idioma indicada, sempre nos será mostrada a homepage traduzida pelo idioma indicado. Por exemplo, <a href="https://elascomputacao.github.io/en">https://elascomputacao.github.io/en</a> nos retorna a homepage em inglês, já a rota raiz, indicada por &quot;/&quot; nos retorna a versão em português do site, que fica no root da pasta pages.</p></li>
+<li><p><strong>schedule.tsx</strong>: Esse arquivo é referente à página da agenda. Para cada idioma temos uma tradução da mesma, que pode ser acessada pela rota do idioma seguido da rota da schedule. Por exemplo, a agenda em português pode ser acessada por <a href="https://elascomputacao.github.io/schedule">https://elascomputacao.github.io/schedule</a> e em inglês por <a href="https://elascomputacao.github.io/en/schedule">https://elascomputacao.github.io/en/schedule</a>.</p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="indextsx"></a><a href="#indextsx" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>index.tsx</h2>
+<p>Iremos passar pelas partes do index.tsx. Como exemplo, pegaremos o arquivo para a versão em português.</p>
+<h3><a class="anchor" aria-hidden="true" id="importações"></a><a href="#importações" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Importações</h3>
+<p>Abaixo segue a visão geral de todas as importações feitas nesse arquivo:</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> React, { useEffect, useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+
+<span class="hljs-comment">//Importando módulos externos</span>
+<span class="hljs-keyword">import</span> {MapPin, Mail} <span class="hljs-keyword">from</span> <span class="hljs-string">'react-feather'</span>;
+<span class="hljs-keyword">import</span> ReactCardCarousel <span class="hljs-keyword">from</span> <span class="hljs-string">'react-card-carousel'</span>
+<span class="hljs-keyword">import</span> {Link} <span class="hljs-keyword">from</span> <span class="hljs-string">'react-scroll'</span>
+
+<span class="hljs-comment">//Importando imagens</span>
+<span class="hljs-keyword">import</span> logoHorizontal <span class="hljs-keyword">from</span> <span class="hljs-string">'../assets/logos/elas_horizontal.png'</span>;
+<span class="hljs-keyword">import</span> logoVertical <span class="hljs-keyword">from</span> <span class="hljs-string">'../assets/logos/elas_vertical.png'</span>;
+<span class="hljs-keyword">import</span> instagram <span class="hljs-keyword">from</span> <span class="hljs-string">'../assets/redes-sociais/instagram.svg'</span>;
+<span class="hljs-keyword">import</span> github <span class="hljs-keyword">from</span> <span class="hljs-string">'../assets/redes-sociais/github.svg'</span>;
+<span class="hljs-keyword">import</span> twitter <span class="hljs-keyword">from</span> <span class="hljs-string">'../assets/redes-sociais/twitter.svg'</span>;
+<span class="hljs-keyword">import</span> cabecalho <span class="hljs-keyword">from</span> <span class="hljs-string">'../assets/images/header.png'</span>;
+
+<span class="hljs-comment">//Importando informações e conteúdo da página</span>
+<span class="hljs-keyword">import</span> socialNetwork <span class="hljs-keyword">from</span> <span class="hljs-string">'../enums/social-network'</span>
+<span class="hljs-keyword">import</span> langs <span class="hljs-keyword">from</span> <span class="hljs-string">'../enums/langs'</span>
+<span class="hljs-keyword">import</span> infos <span class="hljs-keyword">from</span> <span class="hljs-string">'../enums/infos'</span>;
+<span class="hljs-keyword">import</span> partnerships <span class="hljs-keyword">from</span> <span class="hljs-string">'../enums/partnerships'</span>
+<span class="hljs-keyword">import</span> {bio, events, projects, sections, supports, buttonTexts, noEvents} <span class="hljs-keyword">from</span> <span class="hljs-string">'../enums/pt/texts'</span>
+<span class="hljs-keyword">import</span> {langInfo} <span class="hljs-keyword">from</span> <span class="hljs-string">'../enums/pt/lang-infos'</span>
+
+<span class="hljs-comment">//Importando componentes</span>
+<span class="hljs-keyword">import</span> Section <span class="hljs-keyword">from</span> <span class="hljs-string">'../components/Section'</span>;
+<span class="hljs-keyword">import</span> ContactCard <span class="hljs-keyword">from</span> <span class="hljs-string">'../components/ContactCard'</span>;
+<span class="hljs-keyword">import</span> IconStatus <span class="hljs-keyword">from</span> <span class="hljs-string">'../components/IconStatus'</span>;
+<span class="hljs-keyword">import</span> Dropdown <span class="hljs-keyword">from</span> <span class="hljs-string">'../components/DropDown'</span>;
+<span class="hljs-keyword">import</span> PictureLink <span class="hljs-keyword">from</span> <span class="hljs-string">'../components/PictureLink'</span>;
+<span class="hljs-keyword">import</span> EventCard <span class="hljs-keyword">from</span> <span class="hljs-string">'../components/EventCard'</span>;
+<span class="hljs-keyword">import</span> ProjectCard <span class="hljs-keyword">from</span> <span class="hljs-string">'../components/ProjectCard'</span>;
+
+<span class="hljs-comment">//Importando funções utilizadas</span>
+<span class="hljs-keyword">import</span> { arrayShuffle, mouseMonitoring, hasEventsMonth } <span class="hljs-keyword">from</span> <span class="hljs-string">'../functions/functions'</span>;
+<span class="hljs-keyword">import</span> { getUsersFromGitHub } <span class="hljs-keyword">from</span> <span class="hljs-string">'../functions/connections'</span>;
+
+<span class="hljs-comment">//Importando estilo</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">'../styles/home.css'</span>
+</code></pre>
+<p>A primeira delas é o React:</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> React, { useEffect, useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+</code></pre>
+<p>Depois, importamos os módulos externos utilizados no desenvolvimento do projeto. Esses módulos já foram listados na seção <a href="./site">Site</a> dessa documentação:</p>
+<pre><code class="hljs"><span class="hljs-comment">//Importando módulos externos</span>
+<span class="hljs-keyword">import</span> {MapPin, Mail} <span class="hljs-keyword">from</span> <span class="hljs-string">'react-feather'</span>;
+<span class="hljs-keyword">import</span> ReactCardCarousel <span class="hljs-keyword">from</span> <span class="hljs-string">'react-card-carousel'</span>
+<span class="hljs-keyword">import</span> {Link} <span class="hljs-keyword">from</span> <span class="hljs-string">'react-scroll'</span>
+</code></pre>
+<p>Fazemos as importações das imagens utilizadas no site, encontradas na pasta assets:</p>
+<pre><code class="hljs"><span class="hljs-comment">//Importando imagens</span>
+<span class="hljs-keyword">import</span> logoHorizontal <span class="hljs-keyword">from</span> <span class="hljs-string">'../assets/logos/elas_horizontal.png'</span>;
+<span class="hljs-keyword">import</span> logoVertical <span class="hljs-keyword">from</span> <span class="hljs-string">'../assets/logos/elas_vertical.png'</span>;
+<span class="hljs-keyword">import</span> instagram <span class="hljs-keyword">from</span> <span class="hljs-string">'../assets/redes-sociais/instagram.svg'</span>;
+<span class="hljs-keyword">import</span> github <span class="hljs-keyword">from</span> <span class="hljs-string">'../assets/redes-sociais/github.svg'</span>;
+<span class="hljs-keyword">import</span> twitter <span class="hljs-keyword">from</span> <span class="hljs-string">'../assets/redes-sociais/twitter.svg'</span>;
+<span class="hljs-keyword">import</span> cabecalho <span class="hljs-keyword">from</span> <span class="hljs-string">'../assets/images/cabecalho.png'</span>;
+</code></pre>
+<p>Importamos os enums com informações e conteúdo das páginas da sua referida tradução:</p>
+<pre><code class="hljs"><span class="hljs-comment">//Importando informações e conteúdo da página</span>
+<span class="hljs-keyword">import</span> socialNetwork <span class="hljs-keyword">from</span> <span class="hljs-string">'../enums/social-network'</span>
+<span class="hljs-keyword">import</span> langs <span class="hljs-keyword">from</span> <span class="hljs-string">'../enums/langs'</span>
+<span class="hljs-keyword">import</span> infos <span class="hljs-keyword">from</span> <span class="hljs-string">'../enums/infos'</span>;
+<span class="hljs-keyword">import</span> partnerships <span class="hljs-keyword">from</span> <span class="hljs-string">'../enums/partnerships'</span>
+<span class="hljs-keyword">import</span> {bio, events, projects, sections, supports, buttonTexts, noEvents} <span class="hljs-keyword">from</span> <span class="hljs-string">'../enums/pt/texts'</span>
+<span class="hljs-keyword">import</span> {langInfo} <span class="hljs-keyword">from</span> <span class="hljs-string">'../enums/pt/lang-infos'</span>
+</code></pre>
+<p>Para saber mais sobre essas estruturas, confira a seção <a href="./site-enums">Enums</a>.</p>
+<p>Também importamos os componentes criados para o site:</p>
+<pre><code class="hljs"><span class="hljs-comment">//Importando componentes</span>
+<span class="hljs-keyword">import</span> Section <span class="hljs-keyword">from</span> <span class="hljs-string">'../components/Section'</span>;
+<span class="hljs-keyword">import</span> ContactCard <span class="hljs-keyword">from</span> <span class="hljs-string">'../components/ContactCard'</span>;
+<span class="hljs-keyword">import</span> IconStatus <span class="hljs-keyword">from</span> <span class="hljs-string">'../components/IconStatus'</span>;
+<span class="hljs-keyword">import</span> Dropdown <span class="hljs-keyword">from</span> <span class="hljs-string">'../components/DropDown'</span>;
+<span class="hljs-keyword">import</span> PictureLink <span class="hljs-keyword">from</span> <span class="hljs-string">'../components/PictureLink'</span>;
+<span class="hljs-keyword">import</span> EventCard <span class="hljs-keyword">from</span> <span class="hljs-string">'../components/EventCard'</span>;
+<span class="hljs-keyword">import</span> ProjectCard <span class="hljs-keyword">from</span> <span class="hljs-string">'../components/ProjectCard'</span>; 
+</code></pre>
+<p>Mais informações sobre essas estrutura em <a href="./site-components">Components</a>.</p>
+<p>Por fim, importamos as funções:</p>
+<pre><code class="hljs"><span class="hljs-comment">//Importando funções utilizadas</span>
+<span class="hljs-keyword">import</span> { arrayShuffle, mouseMonitoring, hasEventsMonth } <span class="hljs-keyword">from</span> <span class="hljs-string">'../functions/functions'</span>;
+<span class="hljs-keyword">import</span> { getUsersFromGitHub } <span class="hljs-keyword">from</span> <span class="hljs-string">'../functions/connections'</span>;
+</code></pre>
+<p>Para mais detalhes, siga para <a href="./site-functions">Functions</a>.</p>
+<p>E os estilos:</p>
+<pre><code class="hljs"><span class="hljs-comment">//Importando estilo</span>
+<span class="hljs-function"><span class="hljs-title">import</span></span> <span class="hljs-string">'../styles/home.css'</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="componente"></a><a href="#componente" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Componente</h3>
+<p>Agora iremos partir para a parte do componente da página inicial. Primeiramente, abordaremos as partes lógicas e depois cada parte do TSX presente nele.</p>
+<h4><a class="anchor" aria-hidden="true" id="lógica"></a><a href="#lógica" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Lógica</h4>
+<p>Na parte lógica que há no componente existe um <a href="https://pt-br.reactjs.org/docs/hooks-custom.html">efeito Hook</a> que é disparado sempre que a página é carregada. Nessa função, pegamos a listagem de usuárias do GitHub e randomizamos a ordem delas no array, guardando em uma constante setada por um useState, que também é um <a href="https://pt-br.reactjs.org/docs/hooks-reference.html">Hook</a> de React, desse modo, o valor guardado por essa constante pode ser utilizado no restante do código.</p>
+<p>Abaixo temos a visão da parte lógica:</p>
+<pre><code class="hljs"> <span class="hljs-built_in"> const </span>[users, setUsers] = useState([]); //Array de usuárias do GitHub
+ <span class="hljs-built_in"> const </span>[randomIndex, setRandomIndex] = useState([]) //Array de índices misturados
+
+  //Função disparada em todo carregamento da página
+  useEffect(() =&gt; {
+
+    document.title = <span class="hljs-string">"Elas@Computação UFCG"</span> //Título da página
+    
+    //Chamando função para pegar usuárias do GitHub
+    getUsersFromGitHub().then(({data}) =&gt; {
+        setUsers(data); //Setando os dados pegos no<span class="hljs-built_in"> array </span>de usuárias
+        var<span class="hljs-built_in"> array </span>= [...Array(data.length).keys()]; //Pegando todos os índices do<span class="hljs-built_in"> array </span>das usuárias
+        arrayShuffle(array); //Misturando índices para randomizar o painel
+        setRandomIndex(array); //Setando índices randomizados
+    })
+  }, [])
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="tsx"></a><a href="#tsx" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TSX</h4>
+<p>Agora, iremos visualizar parte a parte da estrutura do TSX do nosso site. Todo o conteúdo da página é envolvido por uma div, que delimita o conteúdo próprio da homepage:</p>
+<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"home-page"</span> <span class="hljs-attr">onMouseOver</span>=<span class="hljs-string">{()</span> =&gt;</span> mouseMonitoring()}&gt;
+                        .
+                        .
+                        .
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<h5><a class="anchor" aria-hidden="true" id="cabeçalho"></a><a href="#cabeçalho" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cabeçalho</h5>
+<p>A parte do cabeçalho compreende a seguinte estrutura:</p>
+<pre><code class="hljs"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"header"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"image"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=</span></span><span class="hljs-template-variable">{logoHorizontal}</span><span class="xml"><span class="hljs-tag"> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Logo Elas@Computação Horizontal"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=</span></span><span class="hljs-template-variable">{`${sections.about}</span><span class="xml"><span class="hljs-tag">`}&gt;</span></span><span class="hljs-template-variable">{sections.about}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=</span></span><span class="hljs-template-variable">{`${sections.panel}</span><span class="xml"><span class="hljs-tag">`}&gt;</span></span><span class="hljs-template-variable">{sections.panel}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=</span></span><span class="hljs-template-variable">{`${sections.projects}</span><span class="xml"><span class="hljs-tag">`}&gt;</span></span><span class="hljs-template-variable">{sections.projects}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=</span></span><span class="hljs-template-variable">{`${sections.events}</span><span class="xml"><span class="hljs-tag">`}&gt;</span></span><span class="hljs-template-variable">{sections.events}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=</span></span><span class="hljs-template-variable">{`${sections.partnerships}</span><span class="xml"><span class="hljs-tag">`}&gt;</span></span><span class="hljs-template-variable">{sections.partnerships}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=</span></span><span class="hljs-template-variable">{`${sections.contact}</span><span class="xml"><span class="hljs-tag">`}&gt;</span></span><span class="hljs-template-variable">{sections.contact}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">Dropdown</span>
+    <span class="hljs-attr">title</span>=<span class="hljs-string">""</span>
+    <span class="hljs-attr">defaultImg</span>=</span></span><span class="hljs-template-variable">{langInfo.src}</span><span class="xml"><span class="hljs-tag">
+    <span class="hljs-attr">items</span>=</span></span><span class="hljs-template-variable">{langs}</span><span class="xml"><span class="hljs-tag">
+  /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+</span></code></pre>
+<p>De modo geral, nele temos um nav que lista os links utilizados para navegar dentro do escopo do próprio site.</p>
+<pre><code class="hljs"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=</span></span><span class="hljs-template-variable">{`${sections.contact}</span><span class="xml"><span class="hljs-tag">`}&gt;</span></span><span class="hljs-template-variable">{sections.contact}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+</span></code></pre>
+<p>Esses links pegam a referencia do arquivo <a href="./site-enums#textsts">texts.ts</a> de sua referida versão de tradução e utilizam o componente <a href="https://www.npmjs.com/package/react-scroll">Link do react-scroll</a> para deslizar pela página até o id da seção referente.</p>
+<p>Também podemos enquadrar na estrutura de cabeçalho a imagem inicial da página:</p>
+<pre><code class="hljs"> &lt;img <span class="hljs-attribute">className</span>=<span class="hljs-string">"wellcome-image"</span> src={cabecalho} <span class="hljs-attribute">alt</span>=<span class="hljs-string">"Elas@Computação UFCG"</span>/&gt;
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="main"></a><a href="#main" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Main</h4>
+<p>Na estrutura do main existem as seções do site. Cada seção é representada por um componente <a href="./site-components#section">Section</a>. No total, são 5 seções encontradas dentro do main:</p>
+<ol>
+<li><p><strong>Sobre</strong></p>
+<p>Essa é a seção que introduz a organização para o usuário. Nela temos um texto falando um pouco sobre o Elas@Computação e contextualizando a criação da comunidade com o cenário atual das mulheres na TI, além de um <a href="./site-components#iconstatus">IconStatus</a> com o logo do Elas@Computação.</p>
+<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">Section</span> <span class="hljs-attr">title</span>=<span class="hljs-string">{sections.about}</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"section-about"</span> <span class="hljs-attr">color</span>=<span class="hljs-string">"#fff6f3"</span>&gt;</span>
+      
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"text"</span>&gt;</span>
+      {
+        bio.map(paragraph =&gt; {
+          return(<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"paragraph"</span>&gt;</span>
+            {paragraph}
+          <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>);
+        })
+      }
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      
+      <span class="hljs-tag">&lt;<span class="hljs-name">IconStatus</span> 
+        <span class="hljs-attr">icon</span>=<span class="hljs-string">{logoVertical}</span> 
+        <span class="hljs-attr">status</span>=<span class="hljs-string">{supports.outubroRosa.icon}</span> 
+        <span class="hljs-attr">statusText</span>=<span class="hljs-string">{supports.outubroRosa.description}</span>
+      /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Section</span>&gt;</span>
+</code></pre></li>
+<li><p><strong>Painel</strong></p>
+<p>Nessa seção listamos as integrantes do Elas@Computação com os ícones de seus GitHubs. Nela existe uma listagem de componentes <a href="./site-components#picturelink">PictureLink</a> que representam cada uma das membras.</p>
+<pre><code class="hljs">&lt;Section title={sections.panel} className="section-panel"&gt;
+{ randomIndex.map(<span class="hljs-keyword">index</span> =&gt; {
+        <span class="hljs-keyword">return</span>(
+        &lt;PictureLink 
+            href={`${socialNetwork.github}/${users[<span class="hljs-keyword">index</span>].<span class="hljs-keyword">login</span>}`}
+            pic={users[<span class="hljs-keyword">index</span>].avatar_url}
+            <span class="hljs-type">text</span>={users[<span class="hljs-keyword">index</span>].<span class="hljs-keyword">login</span>}
+            key={users[<span class="hljs-keyword">index</span>].id}
+        /&gt;
+        );
+    })
+    }
+&lt;/Section&gt;
+</code></pre>
+<p>Os dados são pegos da API do GitHub pela <a href="#lógica">parte lógica</a> do componente da homepage.</p></li>
+<li><p><strong>Projetos</strong></p>
+<p>Essa seção compreende os projetos do Elas@Computação. Cada projeto é representado por um <a href="./site-components#projectcard">ProjectCard</a> e são listados com as informações pegas em <a href="./site-enums#textsts">texts.ts</a>.</p>
+<pre><code class="hljs"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Section</span> <span class="hljs-attr">title</span>=<span class="hljs-string">{sections.projects}</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"section-projects"</span> <span class="hljs-attr">color</span>=<span class="hljs-string">"#fff6f3"</span>&gt;</span>  
+    </span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"carousel-component"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ReactCardCarousel</span> <span class="hljs-attr">disable_keydown</span>=</span></span><span class="xquery">{<span class="hljs-built_in"> true</span> }</span><span class="xml"><span class="hljs-tag"> <span class="hljs-attr">autoplay</span>=</span></span><span class="xquery">{<span class="hljs-built_in"> true</span> }</span><span class="xml"><span class="hljs-tag"> <span class="hljs-attr">autoplay_speed</span>=</span></span><span class="xquery">{ <span class="hljs-number">15000</span> }</span><span class="xml"><span class="hljs-tag"> <span class="hljs-attr">className</span>=</span></span><span class="xquery">{<span class="hljs-string">"carousel-component"</span>}</span><span class="xml"><span class="hljs-tag">&gt;</span>
+            </span><span class="xquery">{
+            projects.<span class="hljs-keyword">map</span>(
+                <span class="hljs-keyword">element</span> =&gt; {
+                <span class="hljs-keyword">return</span>(
+                    &lt;ProjectCard 
+                   <span class="hljs-built_in"> key</span>={<span class="hljs-keyword">element</span>.title}</span><span class="xml">
+                    imageURL=</span><span class="xquery">{<span class="hljs-keyword">element</span>.imageURL}</span><span class="xml"> 
+                    title=</span><span class="xquery">{<span class="hljs-keyword">element</span>.title}</span><span class="xml"> 
+                    description=</span><span class="xquery">{<span class="hljs-keyword">element</span>.description}</span><span class="xml">
+                    href=</span><span class="xquery">{<span class="hljs-keyword">element</span>.href}</span><span class="xml">
+                    type=</span><span class="xquery">{<span class="hljs-string">"normal"</span>}</span><span class="xml">
+                    color=</span><span class="xquery">{<span class="hljs-keyword">element</span>.color}</span><span class="xml">
+                    buttonText=</span><span class="xquery">{buttonTexts.projectCard}</span><span class="xml">
+                /&gt;);
+                }
+            )
+            }
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ReactCardCarousel</span>&gt;</span></span><span class="xml">
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+&lt;/Section&gt;
+</code></pre>
+<p>Também utilizamos o componente <a href="https://www.npmjs.com/package/react-card-carousel">ReactCardCarousel</a> para compor nosso carrossel de projetos.</p></li>
+<li><p><strong>Eventos</strong>:</p>
+<p>Na seção de eventos listamos tudo o que temos marcado para o mês. Nela também é possível encontrar o link de redirecionamento para a agenda.</p>
+<pre><code class="hljs">&lt;Section title={sections<span class="hljs-variable">.events</span>} className=<span class="hljs-string">"section-events"</span> subtitle={buttonTexts<span class="hljs-variable">.sectionEvents</span>} link=<span class="hljs-string">"/schedule"</span>&gt;
+      {
+        !hasEventsMonth(events) ? 
+          &lt;EventCard
+          note
+          title=<span class="hljs-string">""</span>
+          day=<span class="hljs-string">""</span>
+          month=<span class="hljs-string">""</span>
+          year=<span class="hljs-string">""</span>
+          <span class="hljs-keyword">time</span>=<span class="hljs-string">""</span>
+          <span class="hljs-keyword">local</span>=<span class="hljs-string">""</span>
+          eventURL=<span class="hljs-string">""</span>
+          href=<span class="hljs-string">""</span>
+          description={noEvents}
+          /&gt;
+        :
+        events<span class="hljs-variable">.map</span>(<span class="hljs-keyword">event</span> =&gt; {
+          <span class="hljs-keyword">return</span>(Number(<span class="hljs-keyword">event</span><span class="hljs-variable">.month</span>) == <span class="hljs-keyword">new</span> Date()<span class="hljs-variable">.getMonth</span>() + <span class="hljs-number">1</span> ? 
+            &lt;EventCard 
+            eventURL={<span class="hljs-keyword">event</span><span class="hljs-variable">.eventURL</span>}
+            href={<span class="hljs-keyword">event</span><span class="hljs-variable">.pageURL</span>}
+            <span class="hljs-keyword">local</span>={<span class="hljs-keyword">event</span><span class="hljs-variable">.local</span>}
+            <span class="hljs-keyword">time</span>={<span class="hljs-keyword">event</span><span class="hljs-variable">.time</span>} title={<span class="hljs-keyword">event</span><span class="hljs-variable">.title</span>}
+            day={<span class="hljs-keyword">event</span><span class="hljs-variable">.day</span>} month={<span class="hljs-keyword">event</span><span class="hljs-variable">.month</span>} year={<span class="hljs-keyword">event</span><span class="hljs-variable">.year</span>}
+            description={<span class="hljs-keyword">event</span><span class="hljs-variable">.description</span>}
+            /&gt;
+           : <span class="hljs-string">""</span>);
+        })
+      }
+&lt;/Section&gt;
+</code></pre>
+<p>Verificamos a existência de eventos utilizando a <a href="./site-functions/haseventsmonthevents-any">função hasEventsMonth</a> e os listamos partindo das informações pegas em <a href="./site-enums#textsts">texts.ts</a>.
+Utilizamos componentes <a href="./site-components#eventcard">EventCard</a> para representar os eventos.</p></li>
+<li><p><strong>Parceiros</strong></p>
+<p>Nessa seção listamos os parceiros do Elas@Computação. As informações sobre cada parceiro é pega em <a href="./site-enums#partnershipsts">partnerships.ts</a>.</p>
+<pre><code class="hljs"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Section</span> <span class="hljs-attr">title</span>=<span class="hljs-string">{sections.partnerships}</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"section-partnerships"</span> <span class="hljs-attr">color</span>=<span class="hljs-string">"#fff6f3"</span>&gt;</span>
+    </span><span class="xquery">{partnerships.<span class="hljs-keyword">map</span>(<span class="hljs-keyword">element</span> =&gt; {
+    <span class="hljs-keyword">return</span>(
+        &lt;PictureLink <span class="hljs-type">text</span>={<span class="hljs-keyword">element</span>.title}</span><span class="xml"> href=</span><span class="xquery">{<span class="hljs-keyword">element</span>.href}</span><span class="xml"> pic=</span><span class="xquery">{<span class="hljs-keyword">element</span>.pic}</span><span class="xml">/&gt;
+    );
+    })}
+<span class="hljs-tag">&lt;/<span class="hljs-name">Section</span>&gt;</span></span>
+</code></pre>
+<p>Cada parceiro é representado por um <a href="./site-components#picturelink">PictureLink</a>.</p></li>
+</ol>
+<p><strong>IMPORTANTE</strong>: As seções alternam de cor para deixar mais claro quando há uma troca de ambiente dentro da página inicial do site. Para isso, a propriedade &quot;color&quot; de <a href="./site-components#section">Section</a> é setada com a cor &quot;#fff6f3&quot;</p>
+<h4><a class="anchor" aria-hidden="true" id="footer"></a><a href="#footer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Footer</h4>
+<p>O footer é também a parte de Contato do site. Em geral, nele encontramos informações de como contatar a organização, como as redes sociais, email e localização.</p>
+<pre><code class="hljs"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">id</span>=</span></span><span class="hljs-template-variable">{sections.contact}</span><span class="xml"><span class="hljs-tag">&gt;</span></span><span class="hljs-template-variable">{sections.contact}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"footer-content"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"contact"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ContactCard</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://goo.gl/maps/xx1zhPUttKVzUSTQ6"</span> <span class="hljs-attr">content</span>=</span></span><span class="hljs-template-variable">{infos.location}</span><span class="xml"><span class="hljs-tag">&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">MapPin</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ContactCard</span>&gt;</span>        
+        <span class="hljs-tag">&lt;<span class="hljs-name">ContactCard</span> <span class="hljs-attr">copy</span> <span class="hljs-attr">content</span>=</span></span><span class="hljs-template-variable">{infos.email}</span><span class="xml"><span class="hljs-tag">&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Mail</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ContactCard</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"social-networks"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span> <span class="hljs-attr">href</span>=</span></span><span class="hljs-template-variable">{socialNetwork.instagramElas}</span><span class="xml"><span class="hljs-tag">&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=</span></span><span class="hljs-template-variable">{instagram}</span><span class="xml"><span class="hljs-tag"> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Instagram"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span> <span class="hljs-attr">href</span>=</span></span><span class="hljs-template-variable">{socialNetwork.githubElas}</span><span class="xml"><span class="hljs-tag">&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=</span></span><span class="hljs-template-variable">{github}</span><span class="xml"><span class="hljs-tag"> <span class="hljs-attr">alt</span>=<span class="hljs-string">"GitHub"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=</span></span><span class="hljs-template-variable">{twitter}</span><span class="xml"><span class="hljs-tag"> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Twitter"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"background"</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"copyright"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=</span></span><span class="hljs-template-variable">{logoHorizontal}</span><span class="xml"><span class="hljs-tag"> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Logo Elas@Computação Horizontal"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>© 2020 Elas@Computação<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
+</span></code></pre>
+<h4><a class="anchor" aria-hidden="true" id="separadores"></a><a href="#separadores" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Separadores</h4>
+<p>Toda seção é separada por uma div que atua como um separador, para ficar mais evidente a existência das repartições.</p>
+<pre><code class="hljs">&lt;<span class="hljs-keyword">div</span> className=<span class="hljs-string">"division"</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="scheduletsx"></a><a href="#scheduletsx" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>schedule.tsx</h2>
+<p>Essa é a página da nossa agenda, onde ficam listados todos os eventos marcados até então.</p>
+<p>A estrutura é bem mais simples do que a da homepage, visto que a agenda só tem um cabeçalho e um main que é composto apenas de um grande componente de calendário, porém contém um pouco mais de lógica, utilizada para evidenciar os dias de evento.</p>
+<h3><a class="anchor" aria-hidden="true" id="importações-1"></a><a href="#importações-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Importações</h3>
+<p>Abaixo está a visão geral das importações:</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> React, { useEffect, useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+
+<span class="hljs-keyword">import</span> { enGB } <span class="hljs-keyword">from</span> <span class="hljs-string">'date-fns/locale'</span>
+<span class="hljs-keyword">import</span> { getDate, getMonth, getYear } <span class="hljs-keyword">from</span> <span class="hljs-string">'date-fns'</span>
+<span class="hljs-keyword">import</span> { DatePickerCalendar} <span class="hljs-keyword">from</span> <span class="hljs-string">'react-nice-dates'</span>
+<span class="hljs-keyword">import</span> {ArrowLeft} <span class="hljs-keyword">from</span> <span class="hljs-string">'react-feather'</span>;
+
+<span class="hljs-keyword">import</span> {events} <span class="hljs-keyword">from</span> <span class="hljs-string">'../enums/pt/texts'</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">'../styles/schedule.css'</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">'react-nice-dates/build/style.css'</span>
+</code></pre>
+<p>Como sempre, iniciamos importando o React:</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> React, { useEffect, useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+</code></pre>
+<p>Depois importamo alguns módulos para nos ajudar com a estilização e lógica da página:</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> { enGB } <span class="hljs-keyword">from</span> <span class="hljs-string">'date-fns/locale'</span>
+<span class="hljs-keyword">import</span> { getDate, getMonth, getYear } <span class="hljs-keyword">from</span> <span class="hljs-string">'date-fns'</span>
+<span class="hljs-keyword">import</span> { DatePickerCalendar} <span class="hljs-keyword">from</span> <span class="hljs-string">'react-nice-dates'</span>
+<span class="hljs-keyword">import</span> {ArrowLeft} <span class="hljs-keyword">from</span> <span class="hljs-string">'react-feather'</span>;
+</code></pre>
+<p>Importamos as informações acerca dos eventos:</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> {events} <span class="hljs-keyword">from</span> <span class="hljs-string">'../enums/pt/texts'</span>
+</code></pre>
+<p>E os estilos:</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">'../styles/schedule.css'</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">'react-nice-dates/build/style.css'</span>
+</code></pre>
+<p>Grande parte da agenda foi montada em cima do <a href="https://reactnicedates.hernansartorio.com/">React Nice Dates</a>.</p>
+<h3><a class="anchor" aria-hidden="true" id="componente-1"></a><a href="#componente-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Componente</h3>
+<p>A parte mais complexa do conteúdo do componente dessa página é a lógica utilizada.</p>
+<p>Em questões do TSX, a página é bem simples, contendo apenas um header e um main. De mesmo modo que o index.tsx, esse componente é envolto por uma div que contém todo o conteúdo da página.</p>
+<h4><a class="anchor" aria-hidden="true" id="lógica-1"></a><a href="#lógica-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Lógica</h4>
+<p>De mesmo modo, para construir a parte lógica utilizamos a <a href="https://reactnicedates.hernansartorio.com/">documentação do React Nice Dates</a> como referência.</p>
+<p>Abaixo temos o código comentado, sinalizando o significado e funcionamento de cada parte:</p>
+<pre><code class="hljs">  <span class="hljs-keyword">const</span> [<span class="hljs-built_in">date</span>, setDate] = useState&lt;<span class="hljs-built_in">Date</span>&gt;() <span class="hljs-comment">//Pega a data clicada</span>
+  <span class="hljs-keyword">const</span> [title, setTitle] = useState(<span class="hljs-string">""</span>) <span class="hljs-comment">//Seta o título do evento na data clicada</span>
+  <span class="hljs-keyword">const</span> [description, setDescription] = useState(<span class="hljs-string">""</span>) <span class="hljs-comment">//Seta a descrição do evento na data marcada</span>
+
+  <span class="hljs-comment">//Efeito Hook disparado a cada vez que a constante date muda de valor</span>
+  useEffect(() =&gt; {
+    getEventInfo(<span class="hljs-built_in">date</span>); <span class="hljs-comment">//Pega as informações da data clicada</span>
+  },[<span class="hljs-built_in">date</span>])
+
+  <span class="hljs-comment">//Efeito Hook disparado ao carregar a página</span>
+  useEffect(() =&gt; {
+    <span class="hljs-built_in">document</span>.title = <span class="hljs-string">"Agenda - Elas@Computação UFCG"</span> <span class="hljs-comment">//Título da página</span>
+    setTitle(<span class="hljs-string">"Clique em uma data para saber mais"</span>) <span class="hljs-comment">//Título inicial das informações mostradas no header</span>
+    setDescription(<span class="hljs-string">"Datas em evidência indicam um evento marcado para o dia"</span>) <span class="hljs-comment">//Descrição inicial das informações mostradas no header</span>
+  }, [])
+
+  <span class="hljs-comment">//Função que checa se existe um evento marcado para uma data passada</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkDate</span>(<span class="hljs-params">date</span>) </span>{
+    <span class="hljs-comment">//Iterando nos eventos</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span>; index &lt; events.length; index++) {
+      <span class="hljs-keyword">const</span> element = events[index]; <span class="hljs-comment">//Pegando evento da vez</span>
+      <span class="hljs-keyword">const</span> newDate = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-built_in">Number</span>(element.year), <span class="hljs-built_in">Number</span>(element.month) - <span class="hljs-number">1</span>, <span class="hljs-built_in">Number</span>(element.day)) <span class="hljs-comment">//Construindo objeto Date com as informações de data</span>
+      
+      <span class="hljs-comment">//Se a data for igual a passada, retorna true</span>
+      <span class="hljs-keyword">if</span> (getDate(newDate) == getDate(<span class="hljs-built_in">date</span>) &amp;&amp; getMonth(newDate) == getMonth (<span class="hljs-built_in">date</span>) &amp;&amp; getYear(newDate) == getYear(<span class="hljs-built_in">date</span>)) {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+      }
+    }
+    <span class="hljs-comment">//Senão, retorna false</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+  }
+
+  <span class="hljs-comment">//Modificadores de estilo</span>
+  <span class="hljs-keyword">const</span> modifiers = {
+    <span class="hljs-attribute">highlight</span>: <span class="hljs-built_in">date</span> =&gt; checkDate(<span class="hljs-built_in">date</span>),
+  }
+  
+  <span class="hljs-comment">//Nomes das classes de modificadores</span>
+  <span class="hljs-keyword">const</span> modifiersClassNames = {
+    <span class="hljs-attribute">highlight</span>: <span class="hljs-string">'-highlight'</span>,
+  }
+  
+  <span class="hljs-comment">//Função que pega e seta as informações de uma data clicada</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getEventInfo</span>(<span class="hljs-params">date</span>) </span>{
+
+    <span class="hljs-comment">//Iterando sobre os eventos</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span>; index &lt; events.length; index++) {
+      <span class="hljs-keyword">const</span> element = events[index]; <span class="hljs-comment">//Pegando o evento da vez</span>
+
+      <span class="hljs-comment">//Se houver um evento marcado para o dia clicado, seta as informações no header</span>
+      <span class="hljs-keyword">if</span> (getDate(<span class="hljs-built_in">date</span>) == <span class="hljs-built_in">Number</span>(element.day) &amp;&amp; getMonth(<span class="hljs-built_in">date</span>) + <span class="hljs-number">1</span> == <span class="hljs-built_in">Number</span>(element.month) &amp;&amp; getYear(<span class="hljs-built_in">date</span>) == <span class="hljs-built_in">Number</span>(element.year)) {
+        setTitle(<span class="hljs-string">`<span class="hljs-subst">${element.title}</span> - <span class="hljs-subst">${element.day}</span>/<span class="hljs-subst">${element.month}</span>/<span class="hljs-subst">${element.year}</span> (<span class="hljs-subst">${element.time}</span>)`</span>)
+        setDescription(element.description)
+        <span class="hljs-keyword">return</span>
+      } <span class="hljs-title">else</span> { <span class="hljs-comment">//Senão, indica nada marcado para o dia</span>
+        setTitle(<span class="hljs-built_in">date</span> ? <span class="hljs-string">`Nenhum evento marcado para <span class="hljs-subst">${getDate(date)}</span>/<span class="hljs-subst">${getMonth(date) + 1}</span>/<span class="hljs-subst">${getYear(date)}</span>`</span> : <span class="hljs-string">""</span>)
+        setDescription(<span class="hljs-string">""</span>)
+      }
+      setDate(<span class="hljs-built_in">date</span>) <span class="hljs-comment">//Seta a data clicada</span>
+    }
+  }
+</code></pre>
+<p>A lógica utilizada nos modificadores para automatizar a listagem das datas marcadas foi tirada da seção <a href="https://reactnicedates.hernansartorio.com">&quot;Customizing days&quot; da documentação do React Nice Days</a>.</p>
+<h4><a class="anchor" aria-hidden="true" id="cabeçalho-1"></a><a href="#cabeçalho-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cabeçalho</h4>
+<p>O cabeçalho da agenda possui uma estrutura bastante simples: um link de volta para a homepage e uma parte textual que mostra informações em tempo real sobre a data clicada no calendário (feito pela parte lógica). A estrutura geral é mostrada abaixo:</p>
+<pre><code class="hljs"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"schedule-header"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ArrowLeft</span> <span class="hljs-attr">size</span>=</span></span><span class="hljs-template-variable">{16}</span><span class="xml"><span class="hljs-tag">/&gt;</span>
+        Voltar para a homepage
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"event-info"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span></span><span class="hljs-template-variable">{title}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><span class="hljs-template-variable">{description}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</span></code></pre>
+<h4><a class="anchor" aria-hidden="true" id="main-1"></a><a href="#main-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Main</h4>
+<p>O main é composto por um único componente o <a href="https://reactnicedates.hernansartorio.com">DatePickerCalendar de React Nice Days</a>.</p>
+<pre><code class="hljs"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">DatePickerCalendar</span>
+        <span class="hljs-attr">date</span>=</span></span><span class="hljs-template-variable">{date}</span><span class="xml"><span class="hljs-tag">
+        <span class="hljs-attr">onDateChange</span>=</span></span><span class="hljs-template-variable">{(e:Date) =&gt; setDate(e)}</span><span class="xml"><span class="hljs-tag"> 
+        <span class="hljs-attr">locale</span>=</span></span><span class="hljs-template-variable">{enGB}</span><span class="xml"><span class="hljs-tag">
+        <span class="hljs-attr">modifiers</span>=</span></span><span class="hljs-template-variable">{modifiers}</span><span class="xml"><span class="hljs-tag">
+        <span class="hljs-attr">modifiersClassNames</span>=</span></span><span class="hljs-template-variable">{modifiersClassNames}</span><span class="xml"><span class="hljs-tag">
+    /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+</span></code></pre>
+<p>De modo geral, esse componente consegue fixar datas clicadas no calendário, explicando a escolha do uso do mesmo.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/DocsSiteElas/docs/site-components"><span class="arrow-prev">← </span><span>Components</span></a><a class="docs-next button" href="/DocsSiteElas/docs/site-translation"><span>Como adicionar uma tradução?</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#visão-geral">Visão geral</a></li><li><a href="#indextsx">index.tsx</a><ul class="toc-headings"><li><a href="#importações">Importações</a></li><li><a href="#componente">Componente</a></li></ul></li><li><a href="#scheduletsx">schedule.tsx</a><ul class="toc-headings"><li><a href="#importações-1">Importações</a></li><li><a href="#componente-1">Componente</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/DocsSiteElas/" class="nav-home"><img src="/DocsSiteElas/img/elas_horizontal.png" alt="Site Elas@Computação Docs"/></a><div><h5>Docs</h5><a href="/DocsSiteElas/docs/site">Projetos</a></div><div><h5>Community</h5><a href="https://www.instagram.com/elascomputacao/" target="_blank" rel="noreferrer noopener">Instagram</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/DocsSiteElas/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/DocsSiteElas/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Elas@Computação</section></footer></div></body></html>

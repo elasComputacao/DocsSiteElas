@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Site Elas@Computação Docs Blog</title>
+        <link>https://elascomputacao.github.io/DocsSiteElas/blog</link>
+        <description>The best place to stay up-to-date with the latest Site Elas@Computação Docs news and events.</description>
+        <lastBuildDate>Fri, 30 Oct 2020 06:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <image>
+            <title>Site Elas@Computação Docs Blog</title>
+            <url>https://elascomputacao.github.io/DocsSiteElas/img/elas_horizontal.png</url>
+            <link>https://elascomputacao.github.io/DocsSiteElas/blog</link>
+        </image>
+        <copyright>Copyright © 2020 Elas@Computação</copyright>
+        <item>
+            <title><![CDATA[Site v1.0]]></title>
+            <link>https://elascomputacao.github.io/DocsSiteElas/blog/2020/10/30/site-v1.0.html</link>
+            <guid>https://elascomputacao.github.io/DocsSiteElas/blog/2020/10/30/site-v1.0.html</guid>
+            <pubDate>Fri, 30 Oct 2020 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>A primeira versão do Site do Elas@Computação está no ar!</p> <p>Acesse a documentação em clicando <a href="/docs/site">aqui</a>.</p> <p>Acesso o site clicando <a href="https://elascomputacao.github.io">aqui</a>.</p> ]]></description>
+        </item>
+    </channel>
+</rss>

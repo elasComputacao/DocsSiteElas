@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Site Elas@Computação · Site Elas@Computação Docs</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="O site do Elas@Computação foi desenvolvido com a finalidade de servir como uma marca da nossa comunidade, centralizando nossas informações e servindo de meio de divulgação de nossos feitos e intergrantes."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Site Elas@Computação · Site Elas@Computação Docs"/><meta property="og:type" content="website"/><meta property="og:url" content="https://elascomputacao.github.io/DocsSiteElas/"/><meta property="og:description" content="O site do Elas@Computação foi desenvolvido com a finalidade de servir como uma marca da nossa comunidade, centralizando nossas informações e servindo de meio de divulgação de nossos feitos e intergrantes."/><meta property="og:image" content="https://elascomputacao.github.io/DocsSiteElas/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://elascomputacao.github.io/DocsSiteElas/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/DocsSiteElas/img/logo_png2.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://elascomputacao.github.io/DocsSiteElas/blog/atom.xml" title="Site Elas@Computação Docs Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://elascomputacao.github.io/DocsSiteElas/blog/feed.xml" title="Site Elas@Computação Docs Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/DocsSiteElas/js/scrollSpy.js"></script><link rel="stylesheet" href="/DocsSiteElas/css/main.css"/><script src="/DocsSiteElas/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/DocsSiteElas/"><img class="logo" src="/DocsSiteElas/img/elas_horizontal.png" alt="Site Elas@Computação Docs"/><h2 class="headerTitleWithLogo">Site Elas@Computação Docs</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive siteNavItemActive"><a href="/DocsSiteElas/docs/site" target="_self">Docs</a></li><li class=""><a href="/DocsSiteElas/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Projetos</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Projetos</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/DocsSiteElas/docs/site">Site</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Site</h3><ul class=""><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-get-started">Primeiros Passos</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-struct">Estrutura</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-enums">Enums</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-functions">Functions</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-components">Components</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-pages">Pages</a></li><li class="navListItem"><a class="navItem" href="/DocsSiteElas/docs/site-translation">Como adicionar uma tradução?</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Site Elas@Computação</h1></header><article><div><span><p>O site do Elas@Computação foi desenvolvido com a finalidade de servir como uma marca da nossa comunidade, centralizando nossas informações e servindo de meio de divulgação de nossos feitos e intergrantes.</p>
+<h2><a class="anchor" aria-hidden="true" id="tecnologias-utilizadas"></a><a href="#tecnologias-utilizadas" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tecnologias utilizadas</h2>
+<ul>
+<li><a href="https://pt-br.reactjs.org/">React</a></li>
+<li><a href="https://www.gatsbyjs.com/css">Gatsby</a></li>
+<li><a href="https://www.w3schools.com/css/">CSS3</a></li>
+<li><a href="https://www.javascript.com/">JavaScript</a></li>
+<li><a href="https://www.typescriptlang.org/">TypeScript</a></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="plugins-e-módulos-utilizados"></a><a href="#plugins-e-módulos-utilizados" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Plugins e módulos utilizados</h2>
+<ul>
+<li><a href="https://reakit.io/">Reakit</a></li>
+<li><a href="https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/">gatsby-plugin-react-helmet</a></li>
+<li><a href="https://www.gatsbyjs.com/plugins/gatsby-plugin-sitemap">gatsby-plugin-site-map</a></li>
+<li><a href="https://www.gatsbyjs.com/plugins/gatsby-plugin-catch-links">gatsby-plugin-catch-links</a></li>
+<li><a href="https://www.gatsbyjs.com/plugins/gatsby-plugin-nprogress/">gatsby-plugin-nprogress</a></li>
+<li><a href="https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/">gatsby-plugin-manifest</a></li>
+<li><a href="https://www.npmjs.com/package/react-copy-to-clipboard">react-copy-to-clipboard</a></li>
+<li><a href="https://www.npmjs.com/package/react-scroll">react-scroll</a></li>
+<li><a href="https://www.npmjs.com/package/react-card-carousel">react-card-carousel</a></li>
+<li><a href="https://github.com/feathericons/feather#feather">Feather Icons</a></li>
+<li><a href="https://reactnicedates.hernansartorio.com/">React Nice Dates</a></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="fontes-das-imagens-e-ícones"></a><a href="#fontes-das-imagens-e-ícones" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Fontes das imagens e ícones</h2>
+<ul>
+<li><a href="https://blush.design/pt">Blush</a></li>
+<li><a href="https://www.humaaans.com/">Humaaans</a></li>
+<li><a href="https://www.flaticon.com/">Flaticon</a></li>
+<li><a href="https://feathericons.com/">Feather Icons</a></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="contribuindo"></a><a href="#contribuindo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Contribuindo</h2>
+<p>Para contribuir com o nosso site siga para a página <a href="/docs/site-get-started">PRIMEIROS PASSOS - SITE</a>.</p>
+<p>Se você deseja aprender para contribuir conosco, segue uma série de links úteis!</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=f5xtS7COSaM">Como fazer um blog utilizando Gatsby - Hacktoberfest OpenDevUFCG</a></li>
+<li><a href="https://www.youtube.com/watch?v=Z88SWjN6Yj0&amp;t=3724s">Configurando projeto Gatsby | Behind the Code #09</a></li>
+<li><a href="https://www.youtube.com/watch?v=0mYq5LrQN1s">TypeScript, o início, de forma prática | MasterClass #07</a></li>
+<li><a href="https://app.rocketseat.com.br/node/curso-react-js">Curso React.js | Rocketseat</a></li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-next button" href="/DocsSiteElas/docs/site-get-started"><span>Primeiros Passos</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#tecnologias-utilizadas">Tecnologias utilizadas</a></li><li><a href="#plugins-e-módulos-utilizados">Plugins e módulos utilizados</a></li><li><a href="#fontes-das-imagens-e-ícones">Fontes das imagens e ícones</a></li><li><a href="#contribuindo">Contribuindo</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/DocsSiteElas/" class="nav-home"><img src="/DocsSiteElas/img/elas_horizontal.png" alt="Site Elas@Computação Docs"/></a><div><h5>Docs</h5><a href="/DocsSiteElas/docs/site">Projetos</a></div><div><h5>Community</h5><a href="https://www.instagram.com/elascomputacao/" target="_blank" rel="noreferrer noopener">Instagram</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/DocsSiteElas/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/DocsSiteElas/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Elas@Computação</section></footer></div></body></html>
