@@ -1,6 +1,0 @@
-{
-  "docs": {
-    "Projetos": ["site"],
-    "Site": ["site-get-started", "site-struct", "site-enums", "site-functions", "site-components", "site-pages", "site-translation"]
-  }
-}
